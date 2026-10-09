@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Fleet | Shree Chakardhar Enterprises Gurugram</title>
+  <meta name="description" content="Browse all 22+ showroom-pristine self-drive cars in Gurugram Sector 93. Thar Roxx 4x4, Scorpio-N, Grand Vitara 2024, Curvv, Venue, Swift & Baleno.">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="ambient-mesh-bg"></div>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-announcement">
+    <div class="container top-announcement-inner">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="status-indicator-pill">
+          <span class="live-dot"></span> Open Now • 9:00 AM TO 10:00 PM
+        </span>
+        <span style="color:#e2e8f0;">
+          <i class="fa-solid fa-location-dot" style="color:var(--brand-amber);margin-right:6px;"></i>
+          F Tower, Orchard Avenue, Signature Global Sector 93, Gurugram
+        </span>
+      </div>
+      <div>
+        <a href="tel:8396977520">
+          <i class="fa-solid fa-phone" style="color:var(--brand-amber);margin-right:6px;"></i> <strong>8396977520</strong>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navbar -->
+  <nav class="site-nav" id="mainNav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-title" style="display:flex;align-items:center;">
+        <img src="images/logo.png" alt="Shree Chakardhar Enterprises">
+      </a>
+
+      <div class="nav-links-row">
+        <a href="index.html" class="nav-link-item">Home</a>
+        <a href="booking.html" class="nav-link-item">Book & Configure</a>
+        
+        <!-- Fleet Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="cars.html" class="nav-link-item active">
+            Fleet Inventory (22) <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;margin-left:4px;"></i>
+          </a>
+          <div class="nav-dropdown-menu">
+            <div class="nav-dropdown-header">Available Fleet (22 Models)</div>
+            <div class="nav-dropdown-grid">
+              <a href="booking.html" class="nav-dropdown-item">
+                <span>Maruti Grand Vitara (2024)</span>
+                <span class="item-price">₹3,200/d</span>
+              </a>
+              <a href="booking.html" class="nav-dropdown-item">
+                <span>Mahindra Thar Roxx 4x4</span>
+                <span class="item-price">₹6,500/d</span>
+              </a>
+              <a href="booking.html" class="nav-dropdown-item">
+                <span>Mahindra Scorpio-N</span>
+                <span class="item-price">₹7,900/d</span>
+              </a>
+              <a href="booking.html" class="nav-dropdown-item">
+                <span>Tata Curvv Coupe SUV</span>
+                <span class="item-price">₹3,600/d</span>
+              </a>
+              <a href="cars.html" class="nav-dropdown-item dropdown-view-all">
+                <span>View All 22 Showroom Cars</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link-item">About</a>
+        <a href="contact.html" class="nav-link-item">Contact</a>
+      </div>
+
+      <div class="nav-right-actions">
+        <a href="https://wa.me/918396977520" target="_blank" class="btn-contact-pill">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Banner -->
+  <section style="padding:60px 0 30px;text-align:center;">
+    <div class="container">
+      <span class="category-pill-tag">Complete Inventory</span>
+      <h1 class="section-hero-title">All <span>22+ Fleet Vehicles</span></h1>
+      <p style="color:var(--text-secondary);font-size:0.95rem;max-width:650px;margin:0 auto;">
+        Transparent daily rental pricing with zero hidden charges. Doorstep delivery across Gurugram, DLF Cyber City, and Delhi Airport.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Fleet Catalog Section -->
+  <section class="carousel-section" style="padding-top:20px;">
+    <div class="container">
+      
+      <!-- Filter Bar -->
+      <div class="fleet-filter-pills-row">
+        <button class="filter-tab-pill active" onclick="filterFleet('all', this)">All Fleet (22)</button>
+        <button class="filter-tab-pill" onclick="filterFleet('suv', this)">Grand Vitara 2024 & Curvv</button>
+        <button class="filter-tab-pill" onclick="filterFleet('offroad', this)">Thar Roxx & 3-Door 4x4</button>
+        <button class="filter-tab-pill" onclick="filterFleet('luxury', this)">Scorpio-N & XUV700</button>
+        <button class="filter-tab-pill" onclick="filterFleet('compact-suv', this)">Venue & Nexon & Fronx</button>
+        <button class="filter-tab-pill" onclick="filterFleet('hatchback', this)">Baleno & Swift</button>
+      </div>
+
+      <div style="margin-bottom:28px;max-width:380px;">
+        <input type="text" id="inventorySearch" placeholder="Search car name (e.g. Grand Vitara, Thar, Swift)..." style="width:100%;background:#ffffff;border:1px solid rgba(0,0,0,0.12);padding:12px 20px;border-radius:var(--radius-full);color:#090d16;font-size:0.9rem;" oninput="handleInventorySearch(this.value)">
+      </div>
+
+      <div class="cars-cards-grid" id="inventoryCardsGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Grand Executive Architectural Footer -->
+  <footer class="site-footer-architectural">
+    <div class="container">
+
+      <!-- Top Footer Highlight Row -->
+      <div class="footer-top-cta-banner">
+        <div class="footer-cta-left">
+          <span class="category-pill-tag" style="background:rgba(217,119,6,0.15);color:#fbbf24;border-color:rgba(217,119,6,0.35);">
+            Self-Drive Luxury Rentals Gurugram
+          </span>
+          <h3 class="footer-cta-heading">Ready to Experience Showroom Luxury?</h3>
+          <p class="footer-cta-sub">Instant doorstep delivery across Sector 93, DLF Cyber City, and Delhi Airport IGI.</p>
+        </div>
+        <div class="footer-cta-actions">
+          <a href="https://wa.me/918396977520?text=Hi%20Shree%20Chakardhar%20Enterprises,%20I%20want%20to%20reserve%20a%20luxury%20car" target="_blank" class="btn-footer-primary">
+            <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Book on WhatsApp
+          </a>
+          <a href="tel:8396977520" class="btn-footer-secondary">
+            <i class="fa-solid fa-phone"></i> Call 8396977520
+          </a>
+        </div>
+      </div>
+
+      <!-- 4-Column Structured Footer Content -->
+      <div class="footer-main-columns-grid">
+
+        <!-- Column 1: Brand & Credentials -->
+        <div class="footer-col brand-col">
+          <div class="footer-brand-logo-wrap">
+            <img src="images/logo.png" alt="Shree Chakardhar Enterprises" class="footer-brand-logo">
+          </div>
+          <p class="footer-brand-desc">
+            Gurugram's premier self-drive and luxury car rental provider. 22+ showroom-conditioned vehicles, transparent per-day pricing, zero deposit options, and doorstep delivery across NCR.
+          </p>
+          <div class="footer-trust-chips">
+            <span class="trust-chip"><i class="fa-solid fa-circle-check"></i> Showroom Pristine Fleet</span>
+            <span class="trust-chip"><i class="fa-solid fa-shield-halved"></i> 100% Insured & Sanitized</span>
+            <span class="trust-chip"><i class="fa-solid fa-bolt"></i> 24/7 Roadside Assistance</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Fleet Lineup -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Showroom Fleet</h4>
+          <ul class="footer-links-list">
+            <li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Mahindra Thar Roxx (5-Door)</a></li>
+            <li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Mahindra Scorpio-N Luxury</a></li>
+            <li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Maruti Grand Vitara 2024 Hybrid</a></li>
+            <li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Tata Curvv Coupe SUV</a></li>
+            <li><a href="booking.html"><i class="fa-solid fa-chevron-right"></i> Mahindra XUV 700 (AX7L)</a></li>
+            <li><a href="cars.html"><i class="fa-solid fa-chevron-right"></i> View Complete 22+ Fleet</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Service Hubs & Coverage -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Coverage Locations</h4>
+          <ul class="footer-links-list">
+            <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> Hub: Sector 93 Signature Global</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> DLF Cyber City & Cyber Hub</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> Golf Course Road & Extension</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> Sohna Road & Southern Peripheral</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> Delhi Airport (IGI T1 & T3)</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-location-dot"></i> Gurugram Railway Station</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Operations -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Hub Operations</h4>
+          <div class="footer-contact-info-block">
+            <div class="contact-info-item">
+              <i class="fa-solid fa-clock"></i>
+              <div>
+                <strong>9:00 AM TO 10:00 PM</strong>
+                <span>Open 7 Days a Week</span>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>8396977520</strong>
+                <span>Direct Booking Helpline</span>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>Shreechakardharenterprises@gmail.com</strong>
+                <span>Support & Enquiries</span>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <i class="fa-solid fa-map-pin"></i>
+              <div>
+                <strong>F Tower Orchard Avenue</strong>
+                <span>Signature Global Sector 93, Gurugram</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Legal & Payment Row -->
+      <div class="footer-bottom-legal-row">
+        <div class="footer-copyright-text">
+          © 2026 Shree Chakardhar Enterprises. All Rights Reserved. Designed for Luxury & Self-Drive Excellence in NCR.
+        </div>
+        <div class="footer-bottom-links">
+          <a href="index.html">Home</a>
+          <a href="booking.html">Book Now</a>
+          <a href="cars.html">Vehicles (22)</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Hub</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    let currentFilterCategory = "all";
+    let currentSearchText = "";
+
+    function renderInventoryCards() {
+      const grid = document.getElementById("inventoryCardsGrid");
+      if (!grid) return;
+
+      const filtered = FLEET_DATA.filter(c => {
+        const catMatch = currentFilterCategory === "all" || c.category === currentFilterCategory;
+        const searchMatch = c.name.toLowerCase().includes(currentSearchText.toLowerCase()) || c.modelYear.includes(currentSearchText);
+        return catMatch && searchMatch;
+      });
+
+      grid.innerHTML = filtered.map(car => `
+        <div class="luxury-car-card">
+          <div class="card-visual-header">
+            <div class="card-rating-tag">
+              <i class="fa-solid fa-person-walking"></i> 120m <span>★ 4.9</span>
+            </div>
+            <div class="card-year-tag">${car.modelYear} Model</div>
+            <img src="${car.image}" alt="${car.name}" class="card-car-photo" onerror="this.src='images/hero-banner.jpg'">
+          </div>
+
+          <div class="card-details-body">
+            <div class="card-title-price-row">
+              <h3 class="card-car-name">${car.name}</h3>
+              <div class="card-car-price">₹${car.pricePerDay.toLocaleString("en-IN")}<span>/day</span></div>
+            </div>
+            <div class="card-subtitle">${car.categoryName} • ${car.fuel}</div>
+
+            <div class="card-specs-row">
+              <span class="spec-chip"><i class="fa-solid fa-gears"></i> ${car.transmission.split(" ")[0]}</span>
+              <span class="spec-chip"><i class="fa-solid fa-users"></i> ${car.seats}</span>
+              <span class="spec-chip"><i class="fa-solid fa-shield"></i> 0 Deposit</span>
+            </div>
+
+            <a href="https://wa.me/918396977520?text=Hi%20Shree%20Chakardhar%20Enterprises,%20I%20want%20to%20rent%20the%20${encodeURIComponent(car.name)}%20(${car.modelYear})" target="_blank" class="btn-card-book">
+              Book on WhatsApp
+            </a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterFleet(cat, btn) {
+      currentFilterCategory = cat;
+      document.querySelectorAll(".filter-tab-pill").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderInventoryCards();
+    }
+
+    function handleInventorySearch(val) {
+      currentSearchText = val;
+      renderInventoryCards();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderInventoryCards();
+    });
+  </script>
+</body>
+</html>

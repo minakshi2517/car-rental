@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 240" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="roadOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a00"/>
+      <stop offset="100%" stop-color="#d95400"/>
+    </linearGradient>
+    <linearGradient id="roadSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a99a8"/>
+      <stop offset="100%" stop-color="#566270"/>
+    </linearGradient>
+    <linearGradient id="carBodyDark" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#181e2b"/>
+      <stop offset="50%" stop-color="#0f1420"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="brandGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <g id="logo-graphic">
+    <!-- Main Text Section -->
+    <text x="20" y="48" font-family="'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="900" font-size="34" letter-spacing="1.5" fill="#ffffff" class="logo-title">
+      SHREE CHAKARDHAR
+    </text>
+    
+    <text x="22" y="80" font-family="'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="800" font-size="20" letter-spacing="11" fill="url(#brandGold)" class="logo-sub">
+      ENTERPRISES
+    </text>
+
+    <text x="24" y="104" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="600" font-size="13" letter-spacing="2.8" fill="#94a3b8" class="logo-tagline">
+      Reliable  |  Affordable  |  Hassle-Free Travel
+    </text>
+
+    <!-- Car Silhouette with Dynamic Road Swirls -->
+    <g transform="translate(190, 85) scale(0.95)">
+      <!-- Car Body Silhouette -->
+      <path d="M 40 100 
+               C 35 70, 45 45, 60 40
+               C 90 35, 125 15, 175 5
+               C 230 -5, 300 0, 370 25
+               C 420 42, 460 65, 490 85
+               C 500 92, 505 102, 485 105
+               C 440 110, 390 108, 360 108
+               C 350 90, 320 75, 290 75
+               C 260 75, 235 90, 225 108
+               C 170 108, 120 108, 95 108
+               C 85 92, 65 85, 45 100 Z" 
+            fill="url(#carBodyDark)" 
+            stroke="rgba(255,255,255,0.18)" 
+            stroke-width="1.5" />
+
+      <!-- Sleek Window Outline -->
+      <path d="M 175 12 
+               C 225 3, 285 8, 340 30 
+               C 330 38, 310 42, 280 42 
+               C 220 42, 185 30, 160 22 Z" 
+            fill="rgba(56, 189, 248, 0.25)" 
+            stroke="rgba(56, 189, 248, 0.4)" 
+            stroke-width="1" />
+
+      <!-- Orange Dynamic Speed Highway Curve -->
+      <path d="M 80 112 
+               C 120 90, 180 50, 270 42
+               C 350 35, 420 45, 475 50
+               C 430 65, 340 58, 260 62
+               C 180 66, 120 98, 70 115 Z" 
+            fill="url(#roadOrange)" 
+            filter="drop-shadow(0px 2px 6px rgba(255, 122, 0, 0.4))" />
+
+      <!-- Lower Silver Highway Swirl Curve -->
+      <path d="M 140 114
+               C 190 88, 255 70, 330 65
+               C 370 63, 410 66, 445 70
+               C 400 85, 335 82, 270 85
+               C 200 88, 155 110, 130 116 Z" 
+            fill="url(#roadSilver)" />
+
+      <!-- White Road Marking Divider Dash -->
+      <path d="M 285 70 
+               C 320 68, 355 70, 390 75
+               C 365 77, 330 75, 295 72 Z" 
+            fill="#ffffff" 
+            opacity="0.95" />
+    </g>
+  </g>
+</svg>

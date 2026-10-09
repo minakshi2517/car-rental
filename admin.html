@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Shree Chakardhar Enterprises</title>
+  <meta name="description" content="Admin Fleet Control Center for Shree Chakardhar Enterprises. Manage vehicle inventory, add new cars, view pricing and active bookings.">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <div class="ambient-mesh-bg"></div>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-announcement">
+    <div class="container top-announcement-inner">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span class="status-indicator-pill">
+          <span class="live-dot"></span> Admin Control Center Active
+        </span>
+        <span style="color:#e2e8f0;">
+          <i class="fa-solid fa-building" style="color:var(--brand-amber);margin-right:6px;"></i>
+          Sector 93 Hub Office • Gurugram NCR
+        </span>
+      </div>
+      <div>
+        <a href="index.html" style="color:#ffffff;font-weight:700;">
+          <i class="fa-solid fa-arrow-left" style="color:var(--brand-amber);margin-right:6px;"></i> Back to Live Website
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Clean Luxury Navbar -->
+  <nav class="site-nav" id="mainNav">
+    <div class="container nav-inner">
+      <div class="brand-group">
+        <a href="index.html" class="brand-title" style="display:flex;align-items:center;">
+          <img src="images/logo.png" alt="Shree Chakardhar Enterprises">
+        </a>
+      </div>
+
+      <div class="nav-links-row">
+        <a href="index.html" class="nav-link-item">Home</a>
+        <a href="booking.html" class="nav-link-item">Book & Configure</a>
+        <a href="cars.html" class="nav-link-item">Fleet (22)</a>
+        <a href="about.html" class="nav-link-item">About</a>
+        <a href="contact.html" class="nav-link-item">Contact</a>
+        <a href="admin.html" class="nav-link-item active" style="color:var(--brand-amber);font-weight:800;">
+          <i class="fa-solid fa-user-shield" style="margin-right:4px;"></i> Admin Dashboard
+        </a>
+      </div>
+
+      <div class="nav-right-actions">
+        <a href="https://wa.me/918396977520" target="_blank" class="btn-contact-pill">
+          <i class="fa-brands fa-whatsapp"></i> Support
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Admin Container -->
+  <main class="container admin-dashboard-container">
+
+    <!-- Header Card -->
+    <div class="admin-header-card">
+      <div>
+        <span class="category-pill-tag" style="background:rgba(217,119,6,0.2);color:#fbbf24;border-color:rgba(217,119,6,0.4);">
+          Fleet Management System
+        </span>
+        <h1 style="font-family:var(--font-display);font-size:2.8rem;text-transform:uppercase;line-height:1.1;margin-top:6px;">
+          Shree Chakardhar <span>Fleet Portal</span>
+        </h1>
+        <p style="color:#cbd5e1;font-size:0.9rem;margin-top:4px;">
+          Add new cars, update daily pricing, and manage live availability for Sector 93 Gurugram.
+        </p>
+      </div>
+
+      <div style="display:flex;gap:12px;">
+        <button class="filter-tab-pill active" onclick="renderAdminCars()">
+          <i class="fa-solid fa-rotate-right"></i> Refresh Fleet
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats 4-Card Row -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon"><i class="fa-solid fa-car"></i></div>
+        <div>
+          <div class="admin-stat-num" id="statTotalFleet">22</div>
+          <div class="admin-stat-label">Total Vehicles</div>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(16,185,129,0.12);color:#10b981;">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+          <div class="admin-stat-num" style="color:#10b981;">Ready</div>
+          <div class="admin-stat-label">Showroom Pristine</div>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;">
+          <i class="fa-solid fa-plus-circle"></i>
+        </div>
+        <div>
+          <div class="admin-stat-num" id="statCustomCars">0</div>
+          <div class="admin-stat-label">Custom Added Cars</div>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="background:rgba(168,85,247,0.12);color:#a855f7;">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+        <div>
+          <div class="admin-stat-num" style="font-size:1.8rem;">₹3,200 - ₹8,900</div>
+          <div class="admin-stat-label">Daily Tariff Range</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main 2-Column Grid: Left Add Form, Right Table -->
+    <div class="admin-content-grid">
+
+      <!-- Left Column: Add New Car Form -->
+      <aside class="admin-card">
+        <h3 class="admin-card-title">
+          <i class="fa-solid fa-circle-plus" style="color:var(--brand-amber);"></i> Add New Vehicle
+        </h3>
+
+        <form id="addCarForm" onsubmit="handleAddCarSubmit(event)">
+          <div class="input-field-group">
+            <label class="input-label" for="adminCarName">Vehicle Name</label>
+            <input type="text" id="adminCarName" class="input-control" placeholder="e.g. Toyota Fortuner Legender" required>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="adminCarCategory">Category</label>
+              <select id="adminCarCategory" class="input-control">
+                <option value="suv">Mid SUV</option>
+                <option value="offroad">4x4 Offroad</option>
+                <option value="luxury">Luxury 7-Seater</option>
+                <option value="compact-suv">Compact SUV</option>
+                <option value="hatchback">Premium Hatchback</option>
+              </select>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="adminCarPrice">Daily Rate (₹)</label>
+              <input type="number" id="adminCarPrice" class="input-control" placeholder="6500" required>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="adminCarTrans">Transmission</label>
+              <select id="adminCarTrans" class="input-control">
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
+                <option value="Auto / Manual">Auto / Manual</option>
+              </select>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="adminCarFuel">Fuel Type</label>
+              <select id="adminCarFuel" class="input-control">
+                <option value="Diesel Turbo">Diesel Turbo</option>
+                <option value="Petrol Hybrid">Petrol Hybrid</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Electric">Electric</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label class="input-label" for="adminCarSeats">Seating Capacity</label>
+            <select id="adminCarSeats" class="input-control">
+              <option value="5 Seater">5 Seater</option>
+              <option value="7 Seater">7 Seater</option>
+              <option value="4 Seater">4 Seater (4x4)</option>
+            </select>
+          </div>
+
+          <div class="input-field-group">
+            <label class="input-label" for="adminCarImg">Image URL / Path</label>
+            <input type="text" id="adminCarImg" class="input-control" placeholder="e.g. images/grand-vitara.jpg">
+          </div>
+
+          <button type="submit" class="btn-whatsapp-reserve" style="background:var(--brand-navy);color:#ffffff;box-shadow:none;margin-top:10px;">
+            <i class="fa-solid fa-plus"></i> Save Vehicle to Fleet
+          </button>
+        </form>
+      </aside>
+
+      <!-- Right Column: Live Inventory Table -->
+      <main class="admin-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+          <h3 class="admin-card-title" style="margin-bottom:0;">
+            <i class="fa-solid fa-list-check" style="color:var(--brand-amber);"></i> Fleet Inventory Table
+          </h3>
+          <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Synced with LocalStorage</span>
+        </div>
+
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Car Details</th>
+                <th>Rate/Day</th>
+                <th>Trans</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminFleetTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
