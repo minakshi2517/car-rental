@@ -237,7 +237,7 @@
       <div class="nav-links-row">
         <a href="index.html" class="nav-link-item">Home</a>
         <a href="booking.html" class="nav-link-item">Book & Configure</a>
-        <a href="cars.html" class="nav-link-item">Fleet (22)</a>
+        <a href="cars.html" class="nav-link-item">Fleet (<span class="fleet-count-display"></span>)</a>
         <a href="about.html" class="nav-link-item">About</a>
         <a href="contact.html" class="nav-link-item">Contact</a>
         <a href="admin.html" class="nav-link-item active" style="color:var(--brand-amber);font-weight:800;">
@@ -272,7 +272,7 @@
 
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
         <button class="filter-tab-pill" style="background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);" onclick="handleResetDefaultFleet()">
-          <i class="fa-solid fa-rotate-left"></i> Reset Defaults (22)
+          <i class="fa-solid fa-rotate-left"></i> Reset Defaults
         </button>
         <button class="filter-tab-pill active" onclick="loadAdminFleetData()">
           <i class="fa-solid fa-rotate-right"></i> Refresh
@@ -285,7 +285,7 @@
       <div class="admin-stat-card">
         <div class="admin-stat-icon"><i class="fa-solid fa-car"></i></div>
         <div>
-          <div class="admin-stat-num" id="statTotalFleet">22</div>
+          <div class="admin-stat-num" id="statTotalFleet">--</div>
           <div class="admin-stat-label">Total Vehicles</div>
         </div>
       </div>
@@ -469,7 +469,7 @@
 
         <!-- Category Filter Pills Row in Table Header -->
         <div class="fleet-filter-pills-row" style="margin-bottom:16px;">
-          <button class="filter-tab-pill active" onclick="handleAdminFilterCategory('all', this)">All (<span id="tabCountAll">22</span>)</button>
+          <button class="filter-tab-pill active" onclick="handleAdminFilterCategory('all', this)">All (<span id="tabCountAll">--</span>)</button>
           <button class="filter-tab-pill" onclick="handleAdminFilterCategory('hatchbacks', this)">Hatchbacks (<span id="tabCountHatch">4</span>)</button>
           <button class="filter-tab-pill" onclick="handleAdminFilterCategory('suvs', this)">SUVs (<span id="tabCountSuv">18</span>)</button>
           <button class="filter-tab-pill" onclick="handleAdminFilterCategory('economy', this)">Economy Cars (<span id="tabCountEconomy">14</span>)</button>
@@ -689,6 +689,8 @@
       document.getElementById("tabCountHatch").innerText = hatch;
       document.getElementById("tabCountSuv").innerText = suv;
       document.getElementById("tabCountEconomy").innerText = eco;
+
+      document.querySelectorAll(".fleet-count-display").forEach(el => el.innerText = total);
     }
 
     function renderAdminTable() {
@@ -931,14 +933,14 @@
 
     // Reset Defaults
     async function handleResetDefaultFleet() {
-      if (!confirm("Are you sure you want to reset the fleet database back to the showroom default 22 models?")) {
+      if (!confirm("Are you sure you want to reset the fleet database back to default showroom models?")) {
         return;
       }
 
       try {
         const res = await fetch("/api/cars/reset", { method: "POST" });
         if (res.ok) {
-          showAdminToast("Fleet database restored to showroom defaults (22 cars)!", "success");
+          showAdminToast("Fleet database restored to showroom defaults!", "success");
           loadAdminFleetData();
         } else {
           throw new Error("Reset failed");

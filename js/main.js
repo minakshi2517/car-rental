@@ -499,6 +499,25 @@ async function syncFleetWithBackend() {
   }
 }
 
+function updateAllFleetCountDisplays() {
+  const count = FLEET_DATA.length;
+  // Dynamically update every element across the website with the exact live car count
+  document.querySelectorAll(".fleet-count-display").forEach(el => {
+    el.innerText = count;
+  });
+  document.querySelectorAll(".fleet-count-display-plus").forEach(el => {
+    el.innerText = count + "+";
+  });
+  const metricNum = document.getElementById("metricFleetCount");
+  if (metricNum) metricNum.innerText = count;
+  const statTotal = document.getElementById("statTotalFleet");
+  if (statTotal) statTotal.innerText = count;
+  const cntAll = document.getElementById("cntAll");
+  if (cntAll) cntAll.innerText = count;
+  const tabAll = document.getElementById("tabCountAll");
+  if (tabAll) tabAll.innerText = count;
+}
+
 function updateFilterCountBadges() {
   const cntAll = document.getElementById("cntAll");
   const cntHatch = document.getElementById("cntHatch");
@@ -509,6 +528,8 @@ function updateFilterCountBadges() {
   if (cntHatch) cntHatch.innerText = FLEET_DATA.filter(c => carMatchesFilter(c, 'hatchbacks')).length;
   if (cntSuv) cntSuv.innerText = FLEET_DATA.filter(c => carMatchesFilter(c, 'suvs')).length;
   if (cntEco) cntEco.innerText = FLEET_DATA.filter(c => carMatchesFilter(c, 'economy')).length;
+
+  updateAllFleetCountDisplays();
 }
 
 // Initialize on DOM Ready
@@ -521,6 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFAQAccordion();
   initMobileNav();
   initHeroScrollAnimation();
+  updateAllFleetCountDisplays();
   syncFleetWithBackend();
   updateFilterCountBadges();
 });

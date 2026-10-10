@@ -327,7 +327,7 @@ app.post('/api/cars/reset', (req, res) => {
       const cars = readCars();
       res.json({
         success: true,
-        message: 'Fleet successfully reset to showroom default 22 models!',
+        message: 'Fleet successfully reset to showroom default models!',
         totalCars: cars.length
       });
     } else {
