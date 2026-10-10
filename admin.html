@@ -122,6 +122,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      white-space: nowrap;
     }
     .btn-table-edit {
       background: #eff6ff;
@@ -193,6 +194,199 @@
       font-size: 0.8rem;
       font-weight: 700;
     }
+
+    /* Form 2-Column Responsive Rows */
+    .admin-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .admin-main-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4.2vw, 2.8rem);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-top: 6px;
+    }
+
+    .admin-header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .admin-table-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .admin-table-search-box {
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .table-scroll-hint {
+      display: none;
+      font-size: 0.76rem;
+      color: #64748b;
+      margin-bottom: 8px;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .admin-modal-footer-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .admin-modal-footer-actions button:first-child { flex: 1; }
+    .admin-modal-footer-actions button:last-child { flex: 2; }
+
+    /* =========================================================
+       RESPONSIVE ADAPTATIONS FOR TABLET & MOBILE (< 1024px, < 768px, < 580px)
+       ========================================================= */
+    @media (max-width: 1024px) {
+      .admin-content-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+      .admin-header-card {
+        padding: 24px 28px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-dashboard-container {
+        padding: 16px 0 60px !important;
+      }
+      .admin-header-card {
+        padding: 20px 16px !important;
+        border-radius: var(--radius-lg) !important;
+        gap: 16px !important;
+        margin-bottom: 20px !important;
+      }
+      .admin-header-actions {
+        width: 100%;
+      }
+      .admin-header-actions button {
+        flex: 1;
+        justify-content: center;
+      }
+      .admin-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        margin-bottom: 22px !important;
+      }
+      .admin-stat-card {
+        padding: 14px 12px !important;
+        gap: 10px !important;
+        border-radius: 14px !important;
+      }
+      .admin-stat-icon {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1.2rem !important;
+        border-radius: 12px !important;
+      }
+      .admin-stat-num {
+        font-size: 1.55rem !important;
+      }
+      .admin-stat-label {
+        font-size: 0.7rem !important;
+      }
+      .admin-card {
+        padding: 20px 16px !important;
+        border-radius: var(--radius-lg) !important;
+      }
+      .table-scroll-hint {
+        display: flex;
+      }
+      .admin-table-wrapper {
+        border-radius: 12px;
+        border: 1px solid rgba(22, 25, 54, 0.08);
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .admin-table {
+        min-width: 640px !important; /* ensures table is cleanly readable with horizontal swipe */
+        width: 100%;
+      }
+      .admin-table th {
+        padding: 10px 12px !important;
+        font-size: 0.72rem !important;
+        white-space: nowrap;
+      }
+      .admin-table td {
+        padding: 12px !important;
+        font-size: 0.85rem !important;
+      }
+      .admin-table-search-box {
+        max-width: 100% !important;
+      }
+      .admin-filter-tabs-row {
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        padding-bottom: 6px !important;
+        -webkit-overflow-scrolling: touch;
+        display: flex !important;
+      }
+      .admin-toast-container {
+        top: 12px !important;
+        right: 12px !important;
+        left: 12px !important;
+      }
+      .admin-toast {
+        min-width: auto !important;
+        width: 100% !important;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .admin-form-row {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+      }
+      .admin-stats-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+      }
+      .admin-card {
+        padding: 16px 12px !important;
+      }
+      .admin-modal-backdrop {
+        padding: 10px !important;
+      }
+      .admin-modal-box {
+        max-height: 94vh !important;
+        border-radius: 16px !important;
+      }
+      .admin-modal-header {
+        padding: 14px 16px !important;
+      }
+      .admin-modal-header h3 {
+        font-size: 1.1rem !important;
+      }
+      .admin-modal-body {
+        padding: 16px 12px !important;
+      }
+      .admin-modal-footer-actions {
+        flex-direction: column-reverse !important;
+        gap: 8px !important;
+      }
+      .admin-modal-footer-actions button {
+        width: 100% !important;
+        flex: none !important;
+      }
+    }
   </style>
 </head>
 <body class="admin-body">
@@ -245,13 +439,45 @@
         </a>
       </div>
 
-      <div class="nav-right-actions">
+      <div class="nav-right-actions" style="display:flex;align-items:center;gap:12px;">
         <a href="https://wa.me/918396977520" target="_blank" class="btn-contact-pill">
           <i class="fa-brands fa-whatsapp"></i> Support
         </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open mobile menu" onclick="toggleMobileDrawer()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" onclick="toggleMobileDrawer()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-header">
+      <img src="images/logo.png" alt="Shree Chakardhar Enterprises" style="height:38px;">
+      <button class="mobile-drawer-close" onclick="toggleMobileDrawer()" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="booking.html" class="mobile-nav-link">Book & Configure <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="cars.html" class="mobile-nav-link">Fleet Inventory (<span class="fleet-count-display"></span>) <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Location <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="admin.html" class="mobile-nav-link active" style="color:var(--brand-amber);font-weight:800;">Admin Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(22,25,54,0.08);">
+      <a href="index.html" class="btn-footer-primary" style="width:100%;justify-content:center;background:var(--brand-navy);color:#ffffff;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Live Website
+      </a>
+      <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">
+        <span class="backend-live-indicator" style="padding:4px 10px;font-size:0.75rem;">
+          <span class="live-dot" style="background:#10b981;"></span> Live Database Active
+        </span>
+      </div>
+    </div>
+  </aside>
 
   <!-- Main Admin Container -->
   <main class="container admin-dashboard-container">
@@ -262,7 +488,7 @@
         <span class="category-pill-tag" style="background:rgba(217,119,6,0.2);color:#fbbf24;border-color:rgba(217,119,6,0.4);">
           Full Fleet Database Control
         </span>
-        <h1 style="font-family:var(--font-display);font-size:2.8rem;text-transform:uppercase;line-height:1.1;margin-top:6px;">
+        <h1 class="admin-main-heading">
           Shree Chakardhar <span>Fleet Portal</span>
         </h1>
         <p style="color:#cbd5e1;font-size:0.9rem;margin-top:4px;">
@@ -270,7 +496,7 @@
         </p>
       </div>
 
-      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <div class="admin-header-actions">
         <button class="filter-tab-pill" style="background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);" onclick="handleResetDefaultFleet()">
           <i class="fa-solid fa-rotate-left"></i> Reset Defaults
         </button>
@@ -336,7 +562,7 @@
             <input type="text" id="addCarName" class="input-control" placeholder="e.g. Toyota Innova Hycross" required>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="addCarYear">Model Year *</label>
               <input type="text" id="addCarYear" class="input-control" value="2025" required>
@@ -350,7 +576,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="addCarPrice">Daily Rate (₹) *</label>
               <input type="number" id="addCarPrice" class="input-control" placeholder="3500" required>
@@ -365,7 +591,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="addCarFuel">Fuel Type</label>
               <select id="addCarFuel" class="input-control">
@@ -387,7 +613,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="addCarMileage">Mileage (km/l)</label>
               <input type="text" id="addCarMileage" class="input-control" placeholder="e.g. 21.5 km/l" value="20.0 km/l">
@@ -453,7 +679,7 @@
 
       <!-- Right Column: Live Inventory Table -->
       <main class="admin-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+        <div class="admin-table-header-row">
           <div>
             <h3 class="admin-card-title" style="margin-bottom:0;">
               <i class="fa-solid fa-list-check" style="color:var(--brand-amber);"></i> Fleet Inventory Table
@@ -462,17 +688,21 @@
           </div>
 
           <!-- Search Input -->
-          <div style="max-width:280px;width:100%;">
+          <div class="admin-table-search-box">
             <input type="text" id="adminTableSearch" placeholder="Search vehicle name..." class="input-control" style="padding:8px 14px;font-size:0.85rem;" oninput="handleAdminTableSearch(this.value)">
           </div>
         </div>
 
         <!-- Category Filter Pills Row in Table Header -->
-        <div class="fleet-filter-pills-row" style="margin-bottom:16px;">
+        <div class="fleet-filter-pills-row admin-filter-tabs-row" style="margin-bottom:12px;">
           <button class="filter-tab-pill active" onclick="handleAdminFilterCategory('all', this)">All (<span id="tabCountAll">--</span>)</button>
           <button class="filter-tab-pill" onclick="handleAdminFilterCategory('hatchbacks', this)">Hatchbacks (<span id="tabCountHatch">4</span>)</button>
           <button class="filter-tab-pill" onclick="handleAdminFilterCategory('suvs', this)">SUVs (<span id="tabCountSuv">18</span>)</button>
           <button class="filter-tab-pill" onclick="handleAdminFilterCategory('economy', this)">Economy Cars (<span id="tabCountEconomy">14</span>)</button>
+        </div>
+
+        <div class="table-scroll-hint">
+          <i class="fa-solid fa-arrows-left-right"></i> Swipe table left/right to view all details & edit/delete
         </div>
 
         <div class="admin-table-wrapper">
@@ -516,7 +746,7 @@
             <input type="text" id="editCarName" class="input-control" required>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="editCarYear">Model Year *</label>
               <input type="text" id="editCarYear" class="input-control" required>
@@ -530,7 +760,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="editCarPrice">Daily Rate (₹) *</label>
               <input type="number" id="editCarPrice" class="input-control" required>
@@ -545,7 +775,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="editCarFuel">Fuel Type</label>
               <select id="editCarFuel" class="input-control">
@@ -567,7 +797,7 @@
             </div>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="admin-form-row">
             <div class="input-field-group">
               <label class="input-label" for="editCarMileage">Mileage</label>
               <input type="text" id="editCarMileage" class="input-control">
@@ -592,9 +822,9 @@
             </div>
           </div>
 
-          <div style="display:flex;gap:12px;margin-top:20px;">
-            <button type="button" class="btn btn-secondary" style="flex:1;" onclick="closeEditCarModal()">Cancel</button>
-            <button type="submit" id="btnEditCarSubmit" class="btn btn-primary" style="flex:2;">
+          <div class="admin-modal-footer-actions">
+            <button type="button" class="btn btn-secondary" onclick="closeEditCarModal()">Cancel</button>
+            <button type="submit" id="btnEditCarSubmit" class="btn btn-primary">
               <i class="fa-solid fa-check"></i> Save Changes to Database
             </button>
           </div>
