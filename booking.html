@@ -19,7 +19,7 @@
     <div class="container top-announcement-inner">
       <div style="display:flex;align-items:center;gap:16px;">
         <span class="status-indicator-pill">
-          <span class="live-dot"></span> Open Now • 9:00 AM TO 10:00 PM
+          <span class="live-dot"></span> 24/7 Booking & Delivery • Hub: 9 AM - 10 PM
         </span>
         <span style="color:#e2e8f0;">
           <i class="fa-solid fa-location-dot" style="color:var(--brand-amber);margin-right:6px;"></i>
@@ -115,12 +115,12 @@
       <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
       <a href="contact.html" class="mobile-nav-link">Contact & Location <i class="fa-solid fa-chevron-right"></i></a>
     </div>
-    <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(22,25,54,0.08);">
+    <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(12, 43, 72,0.08);">
       <a href="https://wa.me/918396977520" target="_blank" class="btn-footer-primary" style="width:100%;justify-content:center;">
         <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking
       </a>
       <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">
-        <i class="fa-solid fa-clock"></i> 9:00 AM TO 10:00 PM Open
+        <i class="fa-solid fa-headset"></i> 24/7 WhatsApp & Booking Support
       </div>
     </div>
   </aside>
@@ -144,21 +144,21 @@
         <!-- Left Panel: Selected Car Photo & Specs -->
         <aside class="sticky-car-panel">
           <div class="cfg-car-badge-row">
-            <span class="category-pill-tag" id="cfgBadge" style="margin-bottom:0;">Coupe SUV</span>
+            <span class="category-pill-tag" id="cfgBadge" style="margin-bottom:0;">Luxury 7-Seater</span>
             <span style="font-size:0.8rem;font-weight:800;color:var(--brand-amber);" id="cfgYear">2024 Model</span>
           </div>
 
-          <h3 class="cfg-car-title" id="cfgName">Tata Curvv Coupe SUV</h3>
-          <p class="cfg-car-category" id="cfgSubtitle">Turbo Petrol / Diesel • Automatic</p>
+          <h3 class="cfg-car-title" id="cfgName">Mahindra Scorpio-N</h3>
+          <p class="cfg-car-category" id="cfgSubtitle">Diesel 2.2L mHawk • Automatic</p>
 
           <div class="cfg-car-image-box">
-            <img src="images/curvv.jpg" alt="Selected Car" class="cfg-main-car-img" id="cfgMainImg">
+            <img src="images/mahindra scorpio -n.jpeg" alt="Mahindra Scorpio-N" class="cfg-main-car-img" id="cfgMainImg">
           </div>
 
           <div class="cfg-specs-pills-grid">
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Daily Rate</div>
-              <div class="cfg-spec-value" style="color:var(--brand-amber);" id="cfgPrice">₹3,600/d</div>
+              <div class="cfg-spec-value" style="color:var(--brand-amber);" id="cfgPrice">₹7,900/d</div>
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Transmission</div>
@@ -166,11 +166,11 @@
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Seating</div>
-              <div class="cfg-spec-value" id="cfgSeats">5 Seater</div>
+              <div class="cfg-spec-value" id="cfgSeats">7 Seater</div>
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Mileage</div>
-              <div class="cfg-spec-value" id="cfgMileage">16.8 km/l</div>
+              <div class="cfg-spec-value" id="cfgMileage">14.5 km/l</div>
             </div>
           </div>
 
@@ -298,7 +298,7 @@
       <!-- Top Footer Highlight Row -->
       <div class="footer-top-cta-banner">
         <div class="footer-cta-left">
-          <span class="category-pill-tag" style="background:rgba(217,119,6,0.15);color:#fbbf24;border-color:rgba(217,119,6,0.35);">
+          <span class="category-pill-tag" style="background:rgba(0, 155, 189,0.15);color:#009bbd;border-color:rgba(0, 155, 189,0.35);">
             Self-Drive Luxury Rentals Gurugram
           </span>
           <h3 class="footer-cta-heading">Ready to Experience Showroom Luxury?</h3>
@@ -323,7 +323,7 @@
             <img src="images/logo.png" alt="Shree Chakardhar Enterprises" class="footer-brand-logo">
           </div>
           <p class="footer-brand-desc">
-            Gurugram's premier self-drive and luxury car rental provider. <span class="fleet-count-display-plus"></span> showroom-conditioned vehicles, transparent per-day pricing, zero deposit options, and doorstep delivery across NCR.
+            Gurugram's premier self-drive and luxury car rental provider. <span class="fleet-count-display-plus"></span> showroom-conditioned vehicles, transparent per-day pricing, 100% refundable deposits, and doorstep delivery across NCR.
           </p>
           <div class="footer-trust-chips">
             <span class="trust-chip"><i class="fa-solid fa-circle-check"></i> Showroom Pristine Fleet</span>
@@ -426,7 +426,7 @@
       // Support URL parameter ?car=car-id
       const urlParams = new URLSearchParams(window.location.search);
       const preselectCar = urlParams.get('car');
-      const initialId = (preselectCar && FLEET_DATA.some(c => c.id === preselectCar)) ? preselectCar : "tata-curvv-2024";
+      const initialId = (preselectCar && FLEET_DATA.some(c => c.id === preselectCar)) ? preselectCar : "scorpio-n-2024";
 
       dropdown.value = initialId;
       onConfigCarChange(initialId);

@@ -203,7 +203,7 @@ app.post('/api/cars', (req, res) => {
       mileage: mileage || '18.0 km/l',
       badge: badge || 'New Addition',
       badgeType: badgeType || 'primary',
-      image: image || 'images/grand-vitara.jpg',
+      image: image || 'images/mahindra scorpio -n.jpeg',
       features: Array.isArray(features) ? features : (features ? features.split(',').map(s => s.trim()) : ['Air Conditioning', 'Push Button Start', 'Touchscreen Infotainment', 'Reverse Parking Sensors']),
       deposit: deposit ? parseInt(deposit, 10) : 3000,
       freeKms: freeKms || '300 km/day',

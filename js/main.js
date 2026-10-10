@@ -13,6 +13,26 @@ const OFFICE_HOURS = { open: 9, close: 22 }; // 9 AM to 10 PM
 // Fleet Inventory
 const FLEET_DATA = [
   {
+    id: "scorpio-n-2024",
+    name: "Mahindra Scorpio-N",
+    modelYear: "2024",
+    pricePerDay: 7900,
+    category: "suv",
+    categoryName: "Luxury 7-Seater",
+    isEconomy: false,
+    transmission: "Automatic",
+    fuel: "Diesel 2.2L mHawk",
+    seats: "7 Seater",
+    mileage: "14.5 km/l",
+    badge: "VIP Boss Stance",
+    badgeType: "gold",
+    image: "images/mahindra scorpio -n.jpeg",
+    features: ["Sunroof", "Sony 3D 12-Speaker Sound", "Captain Seats", "4XPLOR Terrain Modes", "Wireless Android Auto/CarPlay"],
+    deposit: 6000,
+    freeKms: "300 km/day",
+    popular: true
+  },
+  {
     id: "grand-vitara-2024",
     name: "Maruti Grand Vitara",
     modelYear: "2024",
@@ -26,7 +46,7 @@ const FLEET_DATA = [
     mileage: "21.1 km/l",
     badge: "Special Add",
     badgeType: "gold",
-    image: "images/grand-vitara.jpg",
+    image: "images/maruti grand vitara.png",
     features: ["Panoramic Sunroof", "360° View Camera", "Wireless Charger", "Cruise Control", "Ventilated Seats"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -46,29 +66,9 @@ const FLEET_DATA = [
     mileage: "15.2 km/l",
     badge: "Trending 4x4",
     badgeType: "primary",
-    image: "images/thar-roxx.jpg",
+    image: "images/mahindra thar roxx(5-door).png",
     features: ["Panoramic Skyroof", "4x4 Low/High Range", "Level 2 ADAS", "10.25 Inch HD Screens", "Harman Kardon Audio"],
     deposit: 5000,
-    freeKms: "300 km/day",
-    popular: true
-  },
-  {
-    id: "scorpio-n-2024",
-    name: "Mahindra Scorpio-N",
-    modelYear: "2024",
-    pricePerDay: 7900,
-    category: "suv",
-    categoryName: "Luxury 7-Seater",
-    isEconomy: false,
-    transmission: "Automatic",
-    fuel: "Diesel 2.2L mHawk",
-    seats: "7 Seater",
-    mileage: "14.5 km/l",
-    badge: "VIP Boss Stance",
-    badgeType: "gold",
-    image: "images/scorpio-n.jpg",
-    features: ["Sunroof", "Sony 3D 12-Speaker Sound", "Captain Seats", "4XPLOR Terrain Modes", "Wireless Android Auto/CarPlay"],
-    deposit: 6000,
     freeKms: "300 km/day",
     popular: true
   },
@@ -86,7 +86,7 @@ const FLEET_DATA = [
     mileage: "14.0 km/l",
     badge: "Ultra Luxury",
     badgeType: "gold",
-    image: "images/scorpio-n.jpg",
+    image: "images/mahindra  scropio  -n facelift.png",
     features: ["Ventilated Seats", "Level 2 ADAS", "Dual-Zone Climate Control", "Full Digital Cockpit", "Powered Driver Seat"],
     deposit: 7000,
     freeKms: "300 km/day",
@@ -106,7 +106,7 @@ const FLEET_DATA = [
     mileage: "15.0 km/l",
     badge: "Top Spec",
     badgeType: "blue",
-    image: "images/xuv700.jpg",
+    image: "images/mahindra xuv 700(ax7l).png",
     features: ["Panoramic Skyroof", "Flush Smart Door Handles", "3D Audio by Sony", "Adaptive Cruise Control", "Blind View Monitor"],
     deposit: 6000,
     freeKms: "300 km/day",
@@ -126,7 +126,7 @@ const FLEET_DATA = [
     mileage: "18.5 km/l",
     badge: "New Arrival",
     badgeType: "primary",
-    image: "images/curvv.jpg",
+    image: "images/tata curuv coupe suv.png",
     features: ["Coupe Aerodynamics", "Powered Tailgate with Gesture", "Ventilated Front Seats", "Multi-Dial Digital Instrument", "JBL Cinema Audio"],
     deposit: 3500,
     freeKms: "300 km/day",
@@ -146,7 +146,7 @@ const FLEET_DATA = [
     mileage: "14.8 km/l",
     badge: "Off-Road King",
     badgeType: "primary",
-    image: "images/thar-3door.jpg",
+    image: "images/thar 3 door hand top.png",
     features: ["Mechanical Locking Diff", "Washable Interior with Drain Plugs", "Convertible/Hardtop Option", "Roll Cage Safety", "Touchscreen Navigation"],
     deposit: 5000,
     freeKms: "300 km/day",
@@ -166,7 +166,7 @@ const FLEET_DATA = [
     mileage: "14.0 km/l",
     badge: "Heavy Duty",
     badgeType: "dark",
-    image: "images/scorpio-classic.jpg",
+    image: "images/mahindra scorpio  classic s11.png",
     features: ["Classic Muscle Grille", "Captains Executive Seats", "Hydraulic Power Steering", "Robust Ladder Frame", "High Seating Visibility"],
     deposit: 5000,
     freeKms: "300 km/day",
@@ -186,7 +186,7 @@ const FLEET_DATA = [
     mileage: "17.0 km/l",
     badge: "Executive",
     badgeType: "blue",
-    image: "images/seltos.jpg",
+    image: "images/kia seltos.png",
     features: ["Dual 10.25 Inch Curved Displays", "Panoramic Sunroof", "Bose 8-Speaker System", "Ambient Mood Lighting", "Air Purifier"],
     deposit: 4000,
     freeKms: "300 km/day",
@@ -206,7 +206,7 @@ const FLEET_DATA = [
     mileage: "19.2 km/l",
     badge: "5-Star Safety",
     badgeType: "green",
-    image: "images/nexon.jpg",
+    image: "images/tata nexon.png",
     features: ["5-Star BNCAP Crash Safety", "Sequential LED Lightbars", "Voice Assisted Sunroof", "Touch Aircon Console", "Drive Modes (City/Eco/Sport)"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -226,7 +226,7 @@ const FLEET_DATA = [
     mileage: "18.3 km/l",
     badge: "2025 Edition",
     badgeType: "blue",
-    image: "images/venue.jpg",
+    image: "images/hyundai venue.png",
     features: ["Electric Sunroof", "BlueLink Connected Tech", "Wireless Phone Projection", "Rear AC Vents", "Push Button Start"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -246,7 +246,7 @@ const FLEET_DATA = [
     mileage: "18.8 km/l",
     badge: "2026 Model",
     badgeType: "blue",
-    image: "images/venue.jpg",
+    image: "images/hyundai venue.png",
     features: ["Digital Cockpit", "Smart Cruise Control", "Wireless Android Auto / Apple CarPlay", "Paddle Shifters", "Fast Type-C Ports"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -266,7 +266,7 @@ const FLEET_DATA = [
     mileage: "18.5 km/l",
     badge: "Panoramic Skyroof",
     badgeType: "primary",
-    image: "images/xuv-3xo.jpg",
+    image: "images/mahindra xuv 3xo.png",
     features: ["Segment-First Panoramic Sunroof", "Level 2 ADAS Suite", "130 PS Turbo Power", "Harmon 7-Speaker Audio", "Dual Zone AC"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -286,7 +286,7 @@ const FLEET_DATA = [
     mileage: "22.8 km/l",
     badge: "Grey 2025",
     badgeType: "dark",
-    image: "images/fronx-grey.jpg",
+    image: "images/maruti fronec grandeur grey.png",
     features: ["Heads-Up Display (HUD)", "360 Degree View Camera", "9-inch SmartPlay Pro+ Touch", "Wireless Fast Charger", "High Ground Clearance"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -306,7 +306,7 @@ const FLEET_DATA = [
     mileage: "22.8 km/l",
     badge: "White 2025",
     badgeType: "primary",
-    image: "images/fronx-white.jpg",
+    image: "images/maruti fronex pearl white.png",
     features: ["Pearl Arctic White Exterior", "Paddle Shifters", "Cruise Control", "UV Cut Glass", "Smartplay Audio"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -326,7 +326,7 @@ const FLEET_DATA = [
     mileage: "20.1 km/l",
     badge: "2026 Model",
     badgeType: "green",
-    image: "images/punch.jpg",
+    image: "images/TATA punch.png",
     features: ["5-Star Global NCAP Rating", "90-Degree Opening Doors", "Harman Infotainment", "Terrain Traction Pro", "Auto Headlamps"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -346,7 +346,7 @@ const FLEET_DATA = [
     mileage: "20.1 km/l",
     badge: "2024 Model",
     badgeType: "green",
-    image: "images/punch.jpg",
+    image: "images/TATA punch.png",
     features: ["Solid Build Quality", "Spacious Cabin", "Cruise Control", "Rear Defogger & Wiper", "Dual Airbags"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -366,7 +366,7 @@ const FLEET_DATA = [
     mileage: "19.4 km/l",
     badge: "Best Value",
     badgeType: "green",
-    image: "images/exter.jpg",
+    image: "images/hyundai exter.png",
     features: ["Smart Electric Sunroof", "Factory Dashcam (Dual)", "6 Airbags Standard", "H-Signature LED DRLs", "Digital Cluster"],
     deposit: 2000,
     freeKms: "300 km/day",
@@ -386,7 +386,7 @@ const FLEET_DATA = [
     mileage: "22.9 km/l",
     badge: "2026 Model",
     badgeType: "blue",
-    image: "images/baleno.jpg",
+    image: "images/Maruti Baleno 2.png",
     features: ["Heads-Up Display", "360 Surround View", "Auto Climate Control", "Arkamys Surround Sound", "Tilt & Telescopic Steering"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -406,7 +406,7 @@ const FLEET_DATA = [
     mileage: "22.3 km/l",
     badge: "2024 Model",
     badgeType: "blue",
-    image: "images/baleno.jpg",
+    image: "images/Maruti baleno.png",
     features: ["Smooth 4-Cylinder Engine", "Spacious Boot Space (318L)", "Touchscreen Apple CarPlay", "Smart Key Push Start"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -426,7 +426,7 @@ const FLEET_DATA = [
     mileage: "25.75 km/l",
     badge: "High Mileage",
     badgeType: "green",
-    image: "images/swift-new.jpg",
+    image: "images/maruti swift all new.png",
     features: ["All-New Z12E Engine", "25.75 km/l Highest Mileage", "6 Airbags Standard", "Wireless Android Auto / CarPlay", "Sporty Steering"],
     deposit: 2000,
     freeKms: "300 km/day",
@@ -446,7 +446,7 @@ const FLEET_DATA = [
     mileage: "24.0 km/l",
     badge: "City Ride",
     badgeType: "dark",
-    image: "images/swift-white.jpg",
+    image: "images/maruti swift pearl white.png",
     features: ["Pearl Arctic White Finish", "Touchscreen Audio", "Electrically Foldable ORVMs", "Smooth City Drive", "Chilled AC"],
     deposit: 2000,
     freeKms: "300 km/day",
@@ -795,13 +795,13 @@ function switchHeroCar(carKey) {
   const showcaseThumb = document.getElementById("showcaseThumb");
 
   const carImages = {
-    'thar-roxx': 'images/thar-roxx.jpg',
-    'scorpio-n': 'images/scorpio-n.jpg',
-    'grand-vitara': 'images/grand-vitara.jpg',
-    'curvv': 'images/curvv.jpg'
+    'thar-roxx': 'images/mahindra thar roxx(5-door).png',
+    'scorpio-n': 'images/mahindra scorpio -n.jpeg',
+    'grand-vitara': 'images/maruti grand vitara.png',
+    'curvv': 'images/tata curuv coupe suv.png'
   };
 
-  const selectedImage = carImages[carKey] || 'images/thar-roxx.jpg';
+  const selectedImage = carImages[carKey] || 'images/mahindra scorpio -n.jpeg';
 
   if (heroCarImg) {
     heroCarImg.style.opacity = '0.3';
@@ -938,7 +938,7 @@ function renderFleetCards() {
       <div class="car-card-header">
         <span class="car-badge-top badge badge-${car.badgeType}">${car.badge}</span>
         <span class="car-badge-model">${car.modelYear} Model</span>
-        <img src="${car.image}" alt="${car.name}" class="car-card-img" onerror="this.src='images/hero-banner.jpg'">
+        <img src="${car.image}" alt="${car.name}" class="car-card-img" onerror="this.src='images/mahindra scorpio -n.jpeg'">
       </div>
 
       <div class="car-card-body">
@@ -1430,7 +1430,7 @@ function renderAdminCars() {
   tableBody.innerHTML = fleet.map(car => `
     <tr>
       <td>
-        <img src="${car.image}" alt="${car.name}" class="admin-car-thumb" onerror="this.src='images/grand-vitara.jpg'">
+        <img src="${car.image}" alt="${car.name}" class="admin-car-thumb" onerror="this.src='images/mahindra scorpio -n.jpeg'">
       </td>
       <td>
         <strong>${car.name}</strong><br>
@@ -1468,7 +1468,7 @@ function handleAddCarSubmit(event) {
   const transmission = document.getElementById("adminCarTrans").value;
   const fuel = document.getElementById("adminCarFuel").value;
   const seats = document.getElementById("adminCarSeats").value;
-  const image = document.getElementById("adminCarImg").value.trim() || "images/grand-vitara.jpg";
+  const image = document.getElementById("adminCarImg").value.trim() || "images/mahindra scorpio -n.jpeg";
 
   if (!name || !price) {
     showToast("Please fill in car name and price", "error");

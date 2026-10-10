@@ -1,5 +1,31 @@
 [
   {
+    "id": "scorpio-n-2024",
+    "name": "Mahindra Scorpio-N",
+    "modelYear": "2024",
+    "pricePerDay": 7900,
+    "category": "suv",
+    "categoryName": "Luxury 7-Seater",
+    "isEconomy": false,
+    "transmission": "Automatic",
+    "fuel": "Diesel 2.2L mHawk",
+    "seats": "7 Seater",
+    "mileage": "14.5 km/l",
+    "badge": "VIP Boss Stance",
+    "badgeType": "gold",
+    "image": "images/mahindra scorpio -n.jpeg",
+    "features": [
+      "Sunroof",
+      "Sony 3D 12-Speaker Sound",
+      "Captain Seats",
+      "4XPLOR Terrain Modes",
+      "Wireless Android Auto/CarPlay"
+    ],
+    "deposit": 6000,
+    "freeKms": "300 km/day",
+    "popular": true
+  },
+  {
     "id": "grand-vitara-2024",
     "name": "Maruti Grand Vitara",
     "modelYear": "2024",
@@ -13,7 +39,7 @@
     "mileage": "21.1 km/l",
     "badge": "Special Add",
     "badgeType": "gold",
-    "image": "images/grand-vitara.jpg",
+    "image": "images/maruti grand vitara.png",
     "features": [
       "Panoramic Sunroof",
       "360° View Camera",
@@ -39,7 +65,7 @@
     "mileage": "15.2 km/l",
     "badge": "Trending 4x4",
     "badgeType": "primary",
-    "image": "images/thar-roxx.jpg",
+    "image": "images/mahindra thar roxx(5-door).png",
     "features": [
       "Panoramic Skyroof",
       "4x4 Low/High Range",
@@ -48,32 +74,6 @@
       "Harman Kardon Audio"
     ],
     "deposit": 5000,
-    "freeKms": "300 km/day",
-    "popular": true
-  },
-  {
-    "id": "scorpio-n-2024",
-    "name": "Mahindra Scorpio-N",
-    "modelYear": "2024",
-    "pricePerDay": 7900,
-    "category": "suv",
-    "categoryName": "Luxury 7-Seater",
-    "isEconomy": false,
-    "transmission": "Automatic",
-    "fuel": "Diesel 2.2L mHawk",
-    "seats": "7 Seater",
-    "mileage": "14.5 km/l",
-    "badge": "VIP Boss Stance",
-    "badgeType": "gold",
-    "image": "images/scorpio-n.jpg",
-    "features": [
-      "Sunroof",
-      "Sony 3D 12-Speaker Sound",
-      "Captain Seats",
-      "4XPLOR Terrain Modes",
-      "Wireless Android Auto/CarPlay"
-    ],
-    "deposit": 6000,
     "freeKms": "300 km/day",
     "popular": true
   },
@@ -91,7 +91,7 @@
     "mileage": "14.0 km/l",
     "badge": "Ultra Luxury",
     "badgeType": "gold",
-    "image": "images/scorpio-n.jpg",
+    "image": "images/mahindra  scropio  -n facelift.png",
     "features": [
       "Ventilated Seats",
       "Level 2 ADAS",
@@ -117,7 +117,7 @@
     "mileage": "15.0 km/l",
     "badge": "Top Spec",
     "badgeType": "blue",
-    "image": "images/xuv700.jpg",
+    "image": "images/mahindra xuv 700(ax7l).png",
     "features": [
       "Panoramic Skyroof",
       "Flush Smart Door Handles",
@@ -143,7 +143,7 @@
     "mileage": "18.5 km/l",
     "badge": "New Arrival",
     "badgeType": "primary",
-    "image": "images/curvv.jpg",
+    "image": "images/tata curuv coupe suv.png",
     "features": [
       "Coupe Aerodynamics",
       "Powered Tailgate with Gesture",
@@ -169,7 +169,7 @@
     "mileage": "14.8 km/l",
     "badge": "Off-Road King",
     "badgeType": "primary",
-    "image": "images/thar-3door.jpg",
+    "image": "images/thar 3 door hand top.png",
     "features": [
       "Mechanical Locking Diff",
       "Washable Interior with Drain Plugs",
@@ -195,7 +195,7 @@
     "mileage": "14.0 km/l",
     "badge": "Heavy Duty",
     "badgeType": "dark",
-    "image": "images/scorpio-classic.jpg",
+    "image": "images/mahindra scorpio  classic s11.png",
     "features": [
       "Classic Muscle Grille",
       "Captains Executive Seats",
@@ -221,7 +221,7 @@
     "mileage": "17.0 km/l",
     "badge": "Executive",
     "badgeType": "blue",
-    "image": "images/seltos.jpg",
+    "image": "images/kia seltos.png",
     "features": [
       "Dual 10.25 Inch Curved Displays",
       "Panoramic Sunroof",
@@ -247,7 +247,7 @@
     "mileage": "19.2 km/l",
     "badge": "5-Star Safety",
     "badgeType": "green",
-    "image": "images/nexon.jpg",
+    "image": "images/tata nexon.png",
     "features": [
       "5-Star BNCAP Crash Safety",
       "Sequential LED Lightbars",
@@ -273,7 +273,7 @@
     "mileage": "18.3 km/l",
     "badge": "2025 Edition",
     "badgeType": "blue",
-    "image": "images/venue.jpg",
+    "image": "images/hyundai venue.png",
     "features": [
       "Electric Sunroof",
       "BlueLink Connected Tech",
@@ -299,7 +299,7 @@
     "mileage": "18.8 km/l",
     "badge": "2026 Model",
     "badgeType": "blue",
-    "image": "images/venue.jpg",
+    "image": "images/hyundai venue.png",
     "features": [
       "Digital Cockpit",
       "Smart Cruise Control",
@@ -325,7 +325,7 @@
     "mileage": "18.5 km/l",
     "badge": "Panoramic Skyroof",
     "badgeType": "primary",
-    "image": "images/xuv-3xo.jpg",
+    "image": "images/mahindra xuv 3xo.png",
     "features": [
       "Segment-First Panoramic Sunroof",
       "Level 2 ADAS Suite",
@@ -351,7 +351,7 @@
     "mileage": "22.8 km/l",
     "badge": "Grey 2025",
     "badgeType": "dark",
-    "image": "images/fronx-grey.jpg",
+    "image": "images/maruti fronec grandeur grey.png",
     "features": [
       "Heads-Up Display (HUD)",
       "360 Degree View Camera",
@@ -377,7 +377,7 @@
     "mileage": "22.8 km/l",
     "badge": "White 2025",
     "badgeType": "primary",
-    "image": "images/fronx-white.jpg",
+    "image": "images/maruti fronex pearl white.png",
     "features": [
       "Pearl Arctic White Exterior",
       "Paddle Shifters",
@@ -403,7 +403,7 @@
     "mileage": "20.1 km/l",
     "badge": "2026 Model",
     "badgeType": "green",
-    "image": "images/punch.jpg",
+    "image": "images/TATA punch.png",
     "features": [
       "5-Star Global NCAP Rating",
       "90-Degree Opening Doors",
@@ -429,7 +429,7 @@
     "mileage": "20.1 km/l",
     "badge": "2024 Model",
     "badgeType": "green",
-    "image": "images/punch.jpg",
+    "image": "images/TATA punch.png",
     "features": [
       "Solid Build Quality",
       "Spacious Cabin",
@@ -455,7 +455,7 @@
     "mileage": "19.4 km/l",
     "badge": "Best Value",
     "badgeType": "green",
-    "image": "images/exter.jpg",
+    "image": "images/hyundai exter.png",
     "features": [
       "Smart Electric Sunroof",
       "Factory Dashcam (Dual)",
@@ -481,7 +481,7 @@
     "mileage": "22.9 km/l",
     "badge": "2026 Model",
     "badgeType": "blue",
-    "image": "images/baleno.jpg",
+    "image": "images/Maruti Baleno 2.png",
     "features": [
       "Heads-Up Display",
       "360 Surround View",
@@ -507,7 +507,7 @@
     "mileage": "22.3 km/l",
     "badge": "2024 Model",
     "badgeType": "blue",
-    "image": "images/baleno.jpg",
+    "image": "images/Maruti baleno.png",
     "features": [
       "Smooth 4-Cylinder Engine",
       "Spacious Boot Space (318L)",
@@ -532,7 +532,7 @@
     "mileage": "25.75 km/l",
     "badge": "High Mileage",
     "badgeType": "green",
-    "image": "images/swift-new.jpg",
+    "image": "images/maruti swift all new.png",
     "features": [
       "All-New Z12E Engine",
       "25.75 km/l Highest Mileage",
@@ -558,7 +558,7 @@
     "mileage": "24.0 km/l",
     "badge": "City Ride",
     "badgeType": "dark",
-    "image": "images/swift-white.jpg",
+    "image": "images/maruti swift pearl white.png",
     "features": [
       "Pearl Arctic White Finish",
       "Touchscreen Audio",
