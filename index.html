@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="home-page">
+<body>
 
   <!-- Ambient Mesh & Grid Backgrounds -->
   <div class="ambient-mesh-bg"></div>
@@ -100,22 +100,116 @@
         <a href="contact.html" class="nav-link-item">Contact & Location</a>
       </div>
 
-      <div class="nav-right-actions">
+      <div class="nav-right-actions" style="display:flex;align-items:center;gap:12px;">
         <a href="https://wa.me/918396977520?text=Hi%20Shree%20Chakardhar%20Enterprises,%20I%20want%20to%20rent%20a%20car"
           target="_blank" class="btn-contact-pill">
           <i class="fa-brands fa-whatsapp"></i> Contact Us
         </a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open mobile menu" onclick="toggleMobileDrawer()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
 
-  <!-- Kinetic Scroll-Zoom Hero Section -->
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" onclick="toggleMobileDrawer()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-header">
+      <img src="images/logo.png" alt="Shree Chakardhar Enterprises" style="height:38px;">
+      <button class="mobile-drawer-close" onclick="toggleMobileDrawer()" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="booking.html" class="mobile-nav-link">Book & Configure <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="cars.html" class="mobile-nav-link">Fleet Inventory (22) <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Location <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(22,25,54,0.08);">
+      <a href="https://wa.me/918396977520" target="_blank" class="btn-footer-primary" style="width:100%;justify-content:center;">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking
+      </a>
+      <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">
+        <i class="fa-solid fa-clock"></i> 9:00 AM TO 10:00 PM Open
+      </div>
+    </div>
+  </aside>
+
+  <!-- Dedicated Luxury Mobile-Only Hero Section (Light Theme, Edge-to-Edge Full-Width Car) -->
+  <header class="hero-mobile-section" id="heroMobile">
+    <!-- Top Navy Brand Line -->
+    <div class="m-hero-top-header">
+      <div class="m-hero-location-pill">
+        <i class="fa-solid fa-location-dot"></i> Sector 93, Gurugram • 22+ Luxury Fleet
+      </div>
+      <h1 class="m-hero-main-title">
+        DRIVE BEYOND ORDINARY
+      </h1>
+      <p class="m-hero-tagline">
+        Self-Drive Luxury & 4×4 Rentals • Zero Security Deposit Option
+      </p>
+    </div>
+
+    <!-- Edge-to-Edge Full-Width Car Stage -->
+    <div class="m-hero-fullwidth-stage">
+      <img src="images/curvv.jpg" alt="Selected Car" class="m-hero-full-car-img" id="mobileHeroCarImg">
+      <div class="m-hero-car-floating-tag">
+        <span class="m-car-tag-name" id="mobileHeroCarName">Tata Curvv 2024</span>
+        <span class="m-car-tag-sep">•</span>
+        <span class="m-car-tag-rate" id="mobileHeroCarPrice">₹3,600/day</span>
+      </div>
+    </div>
+
+    <!-- 4 Small Car Switching Buttons Underneath -->
+    <div class="m-hero-controls-wrap">
+      <div class="m-hero-4btns-row">
+        <button type="button" class="m-car-btn active" onclick="switchMobileHeroCar('curvv', 'Tata Curvv 2024', '₹3,600/day', 'images/curvv.jpg', 'tata-curvv-2024')">
+          <span class="m-car-btn-name">Curvv</span>
+          <span class="m-car-btn-price">₹3,600/d</span>
+        </button>
+        <button type="button" class="m-car-btn" onclick="switchMobileHeroCar('thar-roxx', 'Thar Roxx 4x4', '₹6,500/day', 'images/thar-roxx.jpg', 'thar-roxx-2024')">
+          <span class="m-car-btn-name">Thar Roxx</span>
+          <span class="m-car-btn-price">₹6,500/d</span>
+        </button>
+        <button type="button" class="m-car-btn" onclick="switchMobileHeroCar('scorpio-n', 'Scorpio-N Luxury', '₹7,900/day', 'images/scorpio-n.jpg', 'scorpio-n-2024')">
+          <span class="m-car-btn-name">Scorpio-N</span>
+          <span class="m-car-btn-price">₹7,900/d</span>
+        </button>
+        <button type="button" class="m-car-btn" onclick="switchMobileHeroCar('grand-vitara', 'Grand Vitara 2024', '₹3,200/day', 'images/grand-vitara.jpg', 'grand-vitara-2024')">
+          <span class="m-car-btn-name">Vitara</span>
+          <span class="m-car-btn-price">₹3,200/d</span>
+        </button>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="m-hero-cta-row">
+        <a href="booking.html?car=tata-curvv-2024" id="mobileHeroBookBtn" class="m-btn-book-primary">
+          <i class="fa-solid fa-car-side"></i> Book This Car
+        </a>
+        <a href="https://wa.me/918396977520?text=Hi%20Shree%20Chakardhar%20Enterprises,%20I%20want%20to%20rent%20a%20car" 
+           target="_blank" class="m-btn-whatsapp-primary">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+
+      <!-- Scroll to Fleet Button -->
+      <a href="#inventorySection" class="m-hero-scroll-link" onclick="document.getElementById('inventorySection').scrollIntoView({behavior:'smooth'}); return false;">
+        <span>Explore All 22 Showroom Vehicles</span>
+        <i class="fa-solid fa-arrow-down"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Kinetic Scroll-Zoom Hero Section (Visible on Desktop & Tablet > 600px) -->
   <header class="hero-kinetic-container" id="heroKinetic">
 
     <!-- Edge-to-Edge Full Width Car Backdrop Frame -->
     <div class="hero-fullwidth-stage">
       <div class="kinetic-car-frame" id="kineticCarFrame">
-        <img src="images/thar-roxx.jpg" alt="Hero Luxury Car" class="kinetic-car-image" id="heroMainCarImage">
+        <img src="images/curvv.jpg" alt="Tata Curvv 2024 Coupe SUV" class="kinetic-car-image" id="heroMainCarImage">
       </div>
     </div>
 
@@ -126,7 +220,11 @@
         <!-- Rearranged Left-Side Floating Car Selector Panel -->
         <div class="hero-car-selector-bar hero-reveal-element">
           <div class="hero-selector-heading">Featured Vehicles</div>
-          <button class="car-switch-chip active" onclick="switchHeroCar('thar-roxx')">
+          <button class="car-switch-chip active" onclick="switchHeroCar('curvv')">
+            <span>Tata Curvv 2024</span>
+            <span class="chip-price">₹3,600/d</span>
+          </button>
+          <button class="car-switch-chip" onclick="switchHeroCar('thar-roxx')">
             <span>Thar Roxx 4x4</span>
             <span class="chip-price">₹6,500/d</span>
           </button>
@@ -138,16 +236,12 @@
             <span>Maruti Grand Vitara</span>
             <span class="chip-price">₹3,200/d</span>
           </button>
-          <button class="car-switch-chip" onclick="switchHeroCar('curvv')">
-            <span>Tata Curvv 2024</span>
-            <span class="chip-price">₹3,600/d</span>
-          </button>
         </div>
 
         <!-- Top Right Floating Showcase Card -->
         <div class="showcase-floating-box hero-reveal-element">
-          <img src="images/thar-roxx.jpg" alt="Showcase Preview" class="showcase-thumb-img" id="showcaseThumb">
-          <div class="showcase-play-btn" onclick="scrollToConfigurator('thar-roxx-2024')">
+          <img src="images/curvv.jpg" alt="Showcase Preview" class="showcase-thumb-img" id="showcaseThumb">
+          <div class="showcase-play-btn" onclick="scrollToConfigurator('tata-curvv-2024')">
             <i class="fa-solid fa-bolt" style="color:var(--brand-amber);"></i> Instant Reserve
           </div>
         </div>
@@ -246,26 +340,26 @@
         <!-- Left Sticky Panel: Active Car Visual & Technical Specs -->
         <aside class="sticky-car-panel">
           <div class="cfg-car-badge-row">
-            <span class="category-pill-tag" id="cfgBadge" style="margin-bottom:0;">Mid SUV</span>
-            <span style="font-size:0.8rem;font-weight:800;color:var(--accent-red);" id="cfgYear">2024 Model</span>
+            <span class="category-pill-tag" id="cfgBadge" style="margin-bottom:0;">Coupe SUV</span>
+            <span style="font-size:0.8rem;font-weight:800;color:var(--brand-amber);" id="cfgYear">2024 Model</span>
           </div>
 
-          <h3 class="cfg-car-title" id="cfgName">Maruti Grand Vitara</h3>
-          <p class="cfg-car-category" id="cfgSubtitle">Smart Hybrid • Automatic / Manual</p>
+          <h3 class="cfg-car-title" id="cfgName">Tata Curvv Coupe SUV</h3>
+          <p class="cfg-car-category" id="cfgSubtitle">Turbo Petrol / Diesel • Automatic</p>
 
           <div class="cfg-car-image-box">
-            <img src="images/grand-vitara.jpg" alt="Selected Car" class="cfg-main-car-img" id="cfgMainImg">
+            <img src="images/curvv.jpg" alt="Selected Car" class="cfg-main-car-img" id="cfgMainImg">
           </div>
 
           <!-- Specs 4-Box Grid -->
           <div class="cfg-specs-pills-grid">
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Daily Rate</div>
-              <div class="cfg-spec-value" style="color:var(--accent-red);" id="cfgPrice">₹3,200/d</div>
+              <div class="cfg-spec-value" style="color:var(--brand-amber);" id="cfgPrice">₹3,600/d</div>
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Transmission</div>
-              <div class="cfg-spec-value" id="cfgTrans">Auto / Manual</div>
+              <div class="cfg-spec-value" id="cfgTrans">Automatic</div>
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Seating</div>
@@ -273,7 +367,7 @@
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Mileage</div>
-              <div class="cfg-spec-value" id="cfgMileage">21.1 km/l</div>
+              <div class="cfg-spec-value" id="cfgMileage">16.8 km/l</div>
             </div>
           </div>
 
@@ -296,7 +390,7 @@
 
           <form id="mainBookingForm" onsubmit="handleConfiguratorWhatsAppSubmit(event)">
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="cfg-dates-grid">
               <div class="input-field-group">
                 <label class="input-label" for="cfgStartDate">Pick-up Date</label>
                 <input type="date" id="cfgStartDate" class="input-control" required onchange="calculateLiveFare()">
@@ -319,13 +413,50 @@
             </div>
 
             <div class="input-field-group">
-              <label class="input-label" for="cfgPickupLoc">Pickup / Handover Location</label>
-              <select id="cfgPickupLoc" class="input-control" onchange="calculateLiveFare()">
+              <label class="input-label" for="cfgPickupLoc">Pickup / Handover Option</label>
+              <select id="cfgPickupLoc" class="input-control" onchange="togglePickupMode(this.value)">
+                <option value="doorstep">Doorstep Delivery (Auto-Detect or Enter Location)</option>
                 <option value="hub">Self Pickup (Sector 93 Gurugram Hub - Free)</option>
-                <option value="doorstep">Doorstep Delivery in Gurugram (+₹499)</option>
                 <option value="cybercity">DLF Cyber City / Golf Course Rd (+₹499)</option>
-                <option value="airport">Delhi Airport IGI T1/T3 (+₹800)</option>
+                <option value="airport">Delhi Airport IGI T1/T3 (+₹799)</option>
               </select>
+            </div>
+
+            <!-- Customer Location Detection & Live Distance Quote Box -->
+            <div class="input-field-group" id="locationDetectContainer">
+              <div class="location-detect-header">
+                <label class="input-label" style="margin-bottom:0;" for="cfgLocationAddress">
+                  <i class="fa-solid fa-location-dot" style="color:var(--brand-amber);margin-right:4px;"></i>
+                  Delivery Address / Live GPS
+                </label>
+                <button type="button" class="btn-detect-loc" id="btnDetectLocation" onclick="detectCustomerLocation()">
+                  <i class="fa-solid fa-location-crosshairs"></i> Auto-Detect My Location
+                </button>
+              </div>
+
+              <input type="text" id="cfgLocationAddress" class="input-control" placeholder="Detect above or enter sector/area..." oninput="handleManualLocationInput(this.value)">
+
+              <!-- Live Distance, Delivery Fee & Confirmation Call Card -->
+              <div class="delivery-distance-card" id="deliveryDistanceCard" style="display:none;">
+                <div class="delivery-dist-header">
+                  <div class="dist-pill" id="locDistancePill">
+                    <i class="fa-solid fa-route"></i> <span id="locDistanceKm">0 km</span> from Sector 93 Hub
+                  </div>
+                  <div class="dist-fee-pill" id="locFeePill">
+                    Delivery: <strong id="locDeliveryFeeText">₹0</strong>
+                  </div>
+                </div>
+                <div class="dist-status-text" id="locStatusText">
+                  <!-- Auto populated by JS -->
+                </div>
+                <div class="confirmation-call-badge" id="locCallBadge" style="display:none;">
+                  <i class="fa-solid fa-phone-volume"></i>
+                  <div>
+                    <strong>Manager Confirmation Call:</strong>
+                    <span>Delivery distance exceeds standard radius. Our fleet manager will call you to confirm dispatch timing and handover!</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Addon Perks -->
@@ -355,10 +486,6 @@
               <div class="fare-sum-row">
                 <span>Delivery Addon:</span>
                 <span id="liveDeliveryFee">₹0 (Hub Pickup)</span>
-              </div>
-              <div class="fare-sum-row">
-                <span>Refundable Deposit:</span>
-                <span id="liveDeposit">₹3,000 (100% Refundable)</span>
               </div>
               <div class="fare-sum-row fare-sum-total">
                 <span>Total Estimated Payable:</span>
@@ -416,22 +543,16 @@
             <!-- Category Filter Pills Vertical List -->
             <div class="vertical-filter-pills">
               <button class="filter-tab-pill active" onclick="filterFleet('all', this)">
-                <span>All Fleet</span> <span class="pill-cnt">22</span>
+                <span>All Fleet</span> <span class="pill-cnt" id="cntAll">22</span>
               </button>
-              <button class="filter-tab-pill" onclick="filterFleet('suv', this)">
-                <span>Grand Vitara & Curvv</span> <span class="pill-cnt">4</span>
+              <button class="filter-tab-pill" onclick="filterFleet('hatchbacks', this)">
+                <span>Hatchbacks</span> <span class="pill-cnt" id="cntHatch">4</span>
               </button>
-              <button class="filter-tab-pill" onclick="filterFleet('offroad', this)">
-                <span>Thar Roxx & 4x4</span> <span class="pill-cnt">4</span>
+              <button class="filter-tab-pill" onclick="filterFleet('suvs', this)">
+                <span>SUVs</span> <span class="pill-cnt" id="cntSuv">18</span>
               </button>
-              <button class="filter-tab-pill" onclick="filterFleet('luxury', this)">
-                <span>Scorpio-N & XUV700</span> <span class="pill-cnt">5</span>
-              </button>
-              <button class="filter-tab-pill" onclick="filterFleet('compact-suv', this)">
-                <span>Venue, Nexon & Fronx</span> <span class="pill-cnt">5</span>
-              </button>
-              <button class="filter-tab-pill" onclick="filterFleet('hatchback', this)">
-                <span>Baleno & Swift</span> <span class="pill-cnt">4</span>
+              <button class="filter-tab-pill" onclick="filterFleet('economy', this)">
+                <span>Economy Cars</span> <span class="pill-cnt" id="cntEconomy">14</span>
               </button>
             </div>
 
@@ -499,8 +620,10 @@
         </div>
       </div>
     </div>
-    <!-- Sticky 2-Column FAQ Section -->
-    <section class="faq-section" id="faqSection">
+  </section>
+
+  <!-- Sticky 2-Column FAQ Section -->
+  <section class="faq-section" id="faqSection">
       <div class="container">
         <div class="faq-split-container">
 
@@ -658,6 +781,8 @@
           </div>
         </div>
       </div>
+    </section>
+
     <!-- Testimonials Carousel Section -->
     <section class="testimonials-section reveal-on-scroll">
       <div class="container">
@@ -875,15 +1000,6 @@
       </div>
     </footer>
 
-    <!-- Floating Quick Action: Chat Now -->
-    <div class="floating-actions-bar">
-      <a href="https://wa.me/918396977520?text=Hi%20Shree%20Chakardhar%20Enterprises,%20I%20need%20a%20car%20rental"
-        target="_blank" class="floating-chat-pill" aria-label="Chat now on WhatsApp">
-        <div class="floating-chat-icon"><i class="fa-brands fa-whatsapp"></i></div>
-        <span class="floating-chat-text">Chat now</span>
-      </a>
-    </div>
-
     <!-- Main JavaScript Engine -->
     <script src="js/main.js"></script>
     <script>
@@ -891,24 +1007,24 @@
       let currentSearchText = "";
       let selectedConfigCar = null;
 
-      // Kinetic Scroll Zoom Reveal & Header Hide/Show on Scroll
-      function updateHeroScrollState() {
-        const scrollY = window.scrollY;
-        const kineticFrame = document.getElementById("kineticCarFrame");
-        const heroReveals = document.querySelectorAll(".hero-reveal-element");
-
-        if (scrollY > 30) {
-          document.body.classList.add("scrolled");
-          if (kineticFrame) kineticFrame.classList.add("revealed");
-          heroReveals.forEach(el => el.classList.add("active"));
-        } else {
-          document.body.classList.remove("scrolled");
-          if (kineticFrame) kineticFrame.classList.remove("revealed");
-          heroReveals.forEach(el => el.classList.remove("active"));
+      // Mobile Drawer Toggle
+      function toggleMobileDrawer() {
+        const drawer = document.getElementById("mobileNavDrawer");
+        const backdrop = document.getElementById("mobileDrawerBackdrop");
+        if (drawer && backdrop) {
+          drawer.classList.toggle("active");
+          backdrop.classList.toggle("active");
         }
       }
 
-      window.addEventListener("scroll", updateHeroScrollState, { passive: true });
+      // Compact Navbar on Scroll
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const mainNav = document.getElementById("mainNav");
+        if (mainNav) {
+          mainNav.classList.toggle("scrolled", scrollY > 40);
+        }
+      }, { passive: true });
 
       // Switch Hero Car in Stage
       function switchHeroCar(carKey) {
@@ -939,12 +1055,15 @@
 
       // Scroll to Configurator with target car
       function scrollToConfigurator(carId) {
-        const dropdown = document.getElementById("cfgCarDropdown");
-        if (dropdown) dropdown.value = carId;
-        onConfigCarChange(carId);
-
         const sec = document.getElementById("configuratorSection");
-        if (sec) sec.scrollIntoView({ behavior: "smooth" });
+        if (sec) {
+          const dropdown = document.getElementById("cfgCarDropdown");
+          if (dropdown) dropdown.value = carId;
+          onConfigCarChange(carId);
+          sec.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.location.href = `booking.html?car=${encodeURIComponent(carId)}`;
+        }
       }
 
       // Populate dropdown & initialize configurator
@@ -956,7 +1075,8 @@
         <option value="${c.id}">${c.name} (${c.modelYear}) - ₹${c.pricePerDay.toLocaleString("en-IN")}/d</option>
       `).join("");
 
-        onConfigCarChange(FLEET_DATA[0].id);
+        dropdown.value = "tata-curvv-2024";
+        onConfigCarChange("tata-curvv-2024");
       }
 
       function onConfigCarChange(carId) {
@@ -973,6 +1093,14 @@
         document.getElementById("cfgSeats").innerText = car.seats;
         document.getElementById("cfgMileage").innerText = car.mileage;
 
+        calculateLiveFare();
+      }
+
+      function togglePickupMode(val) {
+        const box = document.getElementById("locationDetectContainer");
+        if (box) {
+          box.style.display = (val === "hub") ? "none" : "block";
+        }
         calculateLiveFare();
       }
 
@@ -995,8 +1123,26 @@
         }
 
         let deliveryCost = 0;
-        if (loc === "doorstep" || loc === "cybercity") deliveryCost = 499;
-        if (loc === "airport") deliveryCost = 800;
+        let deliveryLabel = "₹0 (Hub Pickup)";
+
+        if (loc === "hub") {
+          deliveryCost = 0;
+          deliveryLabel = "₹0 (Hub Pickup)";
+        } else if (loc === "doorstep") {
+          if (typeof detectedLocationData !== 'undefined' && detectedLocationData && detectedLocationData.deliveryFee !== undefined) {
+            deliveryCost = detectedLocationData.deliveryFee;
+            deliveryLabel = deliveryCost > 0 ? `+₹${deliveryCost} (${detectedLocationData.distanceKm}km)` : `FREE (Near Hub)`;
+          } else {
+            deliveryCost = 499;
+            deliveryLabel = "+₹499 (Standard NCR)";
+          }
+        } else if (loc === "cybercity") {
+          deliveryCost = 499;
+          deliveryLabel = "+₹499 (Cyber City)";
+        } else if (loc === "airport") {
+          deliveryCost = 799;
+          deliveryLabel = "+₹799 (Airport Express)";
+        }
 
         const base = selectedConfigCar.pricePerDay * days;
         const unlimitedCost = unlimited ? (300 * days) : 0;
@@ -1005,8 +1151,9 @@
 
         document.getElementById("liveDays").innerText = `${days} Day${days > 1 ? 's' : ''}`;
         document.getElementById("liveBaseFare").innerText = `₹${base.toLocaleString("en-IN")}`;
-        document.getElementById("liveDeliveryFee").innerText = deliveryCost > 0 ? `+₹${deliveryCost}` : `₹0 (Hub Pickup)`;
-        document.getElementById("liveDeposit").innerText = `₹${selectedConfigCar.deposit.toLocaleString("en-IN")} (100% Refundable)`;
+        document.getElementById("liveDeliveryFee").innerText = deliveryLabel;
+        const depEl = document.getElementById("liveDeposit");
+        if (depEl && selectedConfigCar.deposit) depEl.innerText = `₹${selectedConfigCar.deposit.toLocaleString("en-IN")} (100% Refundable)`;
         document.getElementById("liveFinalTotal").innerText = `₹${total.toLocaleString("en-IN")}`;
       }
 
@@ -1019,9 +1166,26 @@
         const phone = document.getElementById("cfgCustomerPhone").value;
         const start = document.getElementById("cfgStartDate").value;
         const end = document.getElementById("cfgEndDate").value;
-        const locText = document.getElementById("cfgPickupLoc").options[document.getElementById("cfgPickupLoc").selectedIndex].text;
+        const locSelect = document.getElementById("cfgPickupLoc");
+        const locValue = locSelect.value;
+        const locText = locSelect.options[locSelect.selectedIndex].text;
+        const customAddr = document.getElementById("cfgLocationAddress")?.value || "";
         const days = document.getElementById("liveDays").innerText;
         const total = document.getElementById("liveFinalTotal").innerText;
+        const deliveryFee = document.getElementById("liveDeliveryFee").innerText;
+
+        let locDetails = locText;
+        if (locValue === "doorstep" && customAddr) {
+          locDetails = customAddr;
+        }
+
+        let distanceExtra = "";
+        if (typeof detectedLocationData !== 'undefined' && detectedLocationData) {
+          distanceExtra = `*Distance from Hub:* ${detectedLocationData.distanceKm} km (${detectedLocationData.deliveryZone})\n`;
+          if (detectedLocationData.requiresConfirmationCall) {
+            distanceExtra += `⚠️ *Confirmation Call:* Customer requested outstation delivery. Confirmation call required.\n`;
+          }
+        }
 
         const msg = `🚘 *CAR RENTAL RESERVATION - SHREE CHAKARDHAR ENTERPRISES*
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -1030,7 +1194,8 @@
 *Duration:* ${days} (${start} to ${end})
 *Customer Name:* ${name}
 *Customer Phone:* ${phone}
-*Pickup Location:* ${locText}
+*Delivery Location:* ${locDetails}
+${distanceExtra}*Delivery Fee:* ${deliveryFee}
 *Estimated Total:* ${total}
 ━━━━━━━━━━━━━━━━━━━━━━
 *Office Address:* F Tower Orchard Avenue Signature Global Sector 93, Gurugram
@@ -1048,7 +1213,7 @@ Please confirm vehicle availability. Thank you!`;
         const fleetList = (typeof getStoredFleet === 'function') ? getStoredFleet() : FLEET_DATA;
 
         const filtered = fleetList.filter(c => {
-          const catMatch = currentFilterCategory === "all" || c.category === currentFilterCategory;
+          const catMatch = carMatchesFilter(c, currentFilterCategory);
           const searchMatch = c.name.toLowerCase().includes(currentSearchText.toLowerCase()) || (c.modelYear && c.modelYear.includes(currentSearchText));
           return catMatch && searchMatch;
         });
@@ -1133,7 +1298,6 @@ Please confirm vehicle availability. Thank you!`;
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        updateHeroScrollState();
         initConfigurator();
         renderInventoryCards();
 

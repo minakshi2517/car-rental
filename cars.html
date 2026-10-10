@@ -81,13 +81,42 @@
         <a href="contact.html" class="nav-link-item">Contact</a>
       </div>
 
-      <div class="nav-right-actions">
+      <div class="nav-right-actions" style="display:flex;align-items:center;gap:12px;">
         <a href="https://wa.me/918396977520" target="_blank" class="btn-contact-pill">
           <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
         </a>
+        <button class="mobile-menu-toggle" aria-label="Open mobile menu" onclick="toggleMobileDrawer()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" onclick="toggleMobileDrawer()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-header">
+      <img src="images/logo.png" alt="Shree Chakardhar Enterprises" style="height:38px;">
+      <button class="mobile-drawer-close" onclick="toggleMobileDrawer()" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="booking.html" class="mobile-nav-link">Book & Configure <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="cars.html" class="mobile-nav-link active">Fleet Inventory (22) <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Location <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(22,25,54,0.08);">
+      <a href="https://wa.me/918396977520" target="_blank" class="btn-footer-primary" style="width:100%;justify-content:center;">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking
+      </a>
+      <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">
+        <i class="fa-solid fa-clock"></i> 9:00 AM TO 10:00 PM Open
+      </div>
+    </div>
+  </aside>
 
   <!-- Page Banner -->
   <section style="padding:60px 0 30px;text-align:center;">
@@ -107,11 +136,9 @@
       <!-- Filter Bar -->
       <div class="fleet-filter-pills-row">
         <button class="filter-tab-pill active" onclick="filterFleet('all', this)">All Fleet (22)</button>
-        <button class="filter-tab-pill" onclick="filterFleet('suv', this)">Grand Vitara 2024 & Curvv</button>
-        <button class="filter-tab-pill" onclick="filterFleet('offroad', this)">Thar Roxx & 3-Door 4x4</button>
-        <button class="filter-tab-pill" onclick="filterFleet('luxury', this)">Scorpio-N & XUV700</button>
-        <button class="filter-tab-pill" onclick="filterFleet('compact-suv', this)">Venue & Nexon & Fronx</button>
-        <button class="filter-tab-pill" onclick="filterFleet('hatchback', this)">Baleno & Swift</button>
+        <button class="filter-tab-pill" onclick="filterFleet('hatchbacks', this)">Hatchbacks</button>
+        <button class="filter-tab-pill" onclick="filterFleet('suvs', this)">SUVs</button>
+        <button class="filter-tab-pill" onclick="filterFleet('economy', this)">Economy Cars</button>
       </div>
 
       <div style="margin-bottom:28px;max-width:380px;">
@@ -255,7 +282,7 @@
       if (!grid) return;
 
       const filtered = FLEET_DATA.filter(c => {
-        const catMatch = currentFilterCategory === "all" || c.category === currentFilterCategory;
+        const catMatch = carMatchesFilter(c, currentFilterCategory);
         const searchMatch = c.name.toLowerCase().includes(currentSearchText.toLowerCase()) || c.modelYear.includes(currentSearchText);
         return catMatch && searchMatch;
       });

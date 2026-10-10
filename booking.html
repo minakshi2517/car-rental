@@ -88,13 +88,42 @@
         <a href="contact.html" class="nav-link-item">Contact & Location</a>
       </div>
 
-      <div class="nav-right-actions">
+      <div class="nav-right-actions" style="display:flex;align-items:center;gap:12px;">
         <a href="https://wa.me/918396977520" target="_blank" class="btn-contact-pill">
           <i class="fa-brands fa-whatsapp"></i> Contact Us
         </a>
+        <button class="mobile-menu-toggle" aria-label="Open mobile menu" onclick="toggleMobileDrawer()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" onclick="toggleMobileDrawer()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-header">
+      <img src="images/logo.png" alt="Shree Chakardhar Enterprises" style="height:38px;">
+      <button class="mobile-drawer-close" onclick="toggleMobileDrawer()" aria-label="Close mobile menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="booking.html" class="mobile-nav-link active">Book & Configure <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="cars.html" class="mobile-nav-link">Fleet Inventory (22) <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact & Location <i class="fa-solid fa-chevron-right"></i></a>
+    </div>
+    <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(22,25,54,0.08);">
+      <a href="https://wa.me/918396977520" target="_blank" class="btn-footer-primary" style="width:100%;justify-content:center;">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Booking
+      </a>
+      <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">
+        <i class="fa-solid fa-clock"></i> 9:00 AM TO 10:00 PM Open
+      </div>
+    </div>
+  </aside>
 
   <!-- Dedicated Booking Banner -->
   <section style="padding:60px 0 20px;text-align:center;">
@@ -108,32 +137,32 @@
   </section>
 
   <!-- Sticky Interactive Configurator & Fare Calculation -->
-  <section class="configurator-section" style="padding-top:20px;">
+  <section class="configurator-section" id="configuratorSection" style="padding-top:20px;">
     <div class="container">
       <div class="configurator-split-layout">
 
         <!-- Left Panel: Selected Car Photo & Specs -->
         <aside class="sticky-car-panel">
           <div class="cfg-car-badge-row">
-            <span class="category-pill-tag" id="cfgBadge" style="margin-bottom:0;">Mid SUV</span>
+            <span class="category-pill-tag" id="cfgBadge" style="margin-bottom:0;">Coupe SUV</span>
             <span style="font-size:0.8rem;font-weight:800;color:var(--brand-amber);" id="cfgYear">2024 Model</span>
           </div>
 
-          <h3 class="cfg-car-title" id="cfgName">Maruti Grand Vitara</h3>
-          <p class="cfg-car-category" id="cfgSubtitle">Smart Hybrid • Automatic / Manual</p>
+          <h3 class="cfg-car-title" id="cfgName">Tata Curvv Coupe SUV</h3>
+          <p class="cfg-car-category" id="cfgSubtitle">Turbo Petrol / Diesel • Automatic</p>
 
           <div class="cfg-car-image-box">
-            <img src="images/grand-vitara.jpg" alt="Selected Car" class="cfg-main-car-img" id="cfgMainImg">
+            <img src="images/curvv.jpg" alt="Selected Car" class="cfg-main-car-img" id="cfgMainImg">
           </div>
 
           <div class="cfg-specs-pills-grid">
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Daily Rate</div>
-              <div class="cfg-spec-value" style="color:var(--brand-amber);" id="cfgPrice">₹3,200/d</div>
+              <div class="cfg-spec-value" style="color:var(--brand-amber);" id="cfgPrice">₹3,600/d</div>
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Transmission</div>
-              <div class="cfg-spec-value" id="cfgTrans">Auto / Manual</div>
+              <div class="cfg-spec-value" id="cfgTrans">Automatic</div>
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Seating</div>
@@ -141,7 +170,7 @@
             </div>
             <div class="cfg-spec-box">
               <div class="cfg-spec-label">Mileage</div>
-              <div class="cfg-spec-value" id="cfgMileage">21.1 km/l</div>
+              <div class="cfg-spec-value" id="cfgMileage">16.8 km/l</div>
             </div>
           </div>
 
@@ -159,7 +188,7 @@
 
           <form id="mainBookingForm" onsubmit="handleConfiguratorWhatsAppSubmit(event)">
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="cfg-dates-grid">
               <div class="input-field-group">
                 <label class="input-label" for="cfgStartDate">Pick-up Date</label>
                 <input type="date" id="cfgStartDate" class="input-control" required onchange="calculateLiveFare()">
@@ -181,13 +210,44 @@
             </div>
 
             <div class="input-field-group">
-              <label class="input-label" for="cfgPickupLoc">Pickup / Delivery Location</label>
-              <select id="cfgPickupLoc" class="input-control" onchange="calculateLiveFare()">
+              <label class="input-label" for="cfgPickupLoc">Pickup / Handover Option</label>
+              <select id="cfgPickupLoc" class="input-control" onchange="onPickupLocOptionChange()">
+                <option value="doorstep" selected>Doorstep Delivery (Auto-Detect / Distance Quote)</option>
                 <option value="hub">Self Pickup (Sector 93 Gurugram Hub - Free)</option>
-                <option value="doorstep">Doorstep Delivery in Gurugram (+₹499)</option>
-                <option value="cybercity">DLF Cyber City / Golf Course Rd (+₹499)</option>
-                <option value="airport">Delhi Airport IGI T1/T3 (+₹800)</option>
+                <option value="cybercity">DLF Cyber City / Golf Course Rd (Fixed ₹499)</option>
+                <option value="airport">Delhi Airport IGI T1/T3 (Fixed ₹800)</option>
               </select>
+            </div>
+
+            <!-- Customer Location Detection & Dynamic Distance Block -->
+            <div id="locationDetectContainer" class="input-field-group" style="margin-top:14px;">
+              <div class="location-detect-header">
+                <label class="input-label" for="cfgLocationAddress" style="margin-bottom:0;">
+                  <i class="fa-solid fa-location-dot" style="color:var(--brand-amber);margin-right:6px;"></i> Delivery Address / Area
+                </label>
+                <button type="button" id="btnDetectLocation" class="btn-detect-loc" onclick="detectCustomerLocation()">
+                  <i class="fa-solid fa-location-crosshairs"></i> Auto-Detect My Location
+                </button>
+              </div>
+              <input type="text" id="cfgLocationAddress" class="input-control" 
+                placeholder="Click auto-detect or type your delivery location/area..." 
+                oninput="handleManualLocationInput(this.value)">
+
+              <!-- Dynamic Distance & Delivery Surcharge Card -->
+              <div id="deliveryDistanceCard" class="delivery-distance-card" style="display:none;">
+                <div class="delivery-dist-header">
+                  <span class="dist-pill"><i class="fa-solid fa-route"></i> Hub Distance: <strong id="locDistanceKm">-- km</strong></span>
+                  <span id="locFeePill" class="dist-fee-pill">Delivery Fee: <strong id="locDeliveryFeeText">₹0</strong></span>
+                </div>
+                <div id="locStatusText" class="dist-status-text">Hub: F Tower Orchard Avenue, Sector 93 Gurugram</div>
+                <div id="locCallBadge" class="confirmation-call-badge" style="display:none;">
+                  <i class="fa-solid fa-phone-volume"></i>
+                  <div>
+                    <strong>Manager Route Confirmation Required:</strong>
+                    <span>Your location is beyond the standard 30 km local delivery zone. An outstation delivery fee applies, and our operations manager will call you immediately to confirm delivery route, schedule & driver dispatch!</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="addon-toggle-box">
@@ -214,10 +274,6 @@
               <div class="fare-sum-row">
                 <span>Delivery Fee:</span>
                 <span id="liveDeliveryFee">₹0 (Hub Pickup)</span>
-              </div>
-              <div class="fare-sum-row">
-                <span>Refundable Security Deposit:</span>
-                <span id="liveDeposit">₹3,000 (100% Refundable)</span>
               </div>
               <div class="fare-sum-row fare-sum-total">
                 <span>Total Payable Amount:</span>
@@ -356,16 +412,163 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Pill -->
-  <div class="floating-actions-bar">
-    <a href="https://wa.me/918396977520?text=Hi%20Shree%20Chakardhar%20Enterprises,%20I%20want%20to%20book%20a%20car" target="_blank" class="floating-chat-pill">
-      <div class="floating-chat-icon"><i class="fa-brands fa-whatsapp"></i></div>
-      <span class="floating-chat-text">Chat now</span>
-    </a>
-  </div>
-
   <script src="js/main.js"></script>
   <script>
+    let selectedConfigCar = null;
+
+    function populateConfiguratorDropdown() {
+      const dropdown = document.getElementById("cfgCarDropdown");
+      if (!dropdown) return;
+      dropdown.innerHTML = FLEET_DATA.map(c => `
+        <option value="${c.id}">${c.name} (${c.modelYear}) - ₹${c.pricePerDay.toLocaleString("en-IN")}/d</option>
+      `).join("");
+
+      // Support URL parameter ?car=car-id
+      const urlParams = new URLSearchParams(window.location.search);
+      const preselectCar = urlParams.get('car');
+      const initialId = (preselectCar && FLEET_DATA.some(c => c.id === preselectCar)) ? preselectCar : "tata-curvv-2024";
+
+      dropdown.value = initialId;
+      onConfigCarChange(initialId);
+    }
+
+    function onConfigCarChange(carId) {
+      const car = FLEET_DATA.find(c => c.id === carId) || FLEET_DATA[0];
+      selectedConfigCar = car;
+      document.getElementById("cfgName").innerText = car.name;
+      document.getElementById("cfgYear").innerText = car.modelYear + " Model";
+      document.getElementById("cfgBadge").innerText = car.categoryName;
+      document.getElementById("cfgSubtitle").innerText = `${car.fuel} • ${car.transmission}`;
+      document.getElementById("cfgMainImg").src = car.image;
+      document.getElementById("cfgPrice").innerText = `₹${car.pricePerDay.toLocaleString("en-IN")}/d`;
+      document.getElementById("cfgTrans").innerText = car.transmission.split(" ")[0];
+      document.getElementById("cfgSeats").innerText = car.seats;
+      document.getElementById("cfgMileage").innerText = car.mileage;
+      calculateLiveFare();
+    }
+
+    function onPickupLocOptionChange() {
+      const loc = document.getElementById("cfgPickupLoc").value;
+      const container = document.getElementById("locationDetectContainer");
+      if (container) {
+        if (loc === "doorstep") {
+          container.style.display = "block";
+        } else {
+          container.style.display = "none";
+        }
+      }
+      calculateLiveFare();
+    }
+
+    function calculateLiveFare() {
+      if (!selectedConfigCar) return;
+      const start = document.getElementById("cfgStartDate").value;
+      const end = document.getElementById("cfgEndDate").value;
+      const loc = document.getElementById("cfgPickupLoc").value;
+      const unlimited = document.getElementById("cfgUnlimitedKms").checked;
+      const damageCover = document.getElementById("cfgDamageCover").checked;
+
+      let days = 3;
+      if (start && end) {
+        const d1 = new Date(start);
+        const d2 = new Date(end);
+        const diff = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+        days = diff > 0 ? diff : 1;
+      }
+
+      let deliveryCost = 0;
+      let deliveryLabel = "₹0 (Hub Pickup)";
+      const locData = window.detectedLocationData || detectedLocationData;
+
+      if (loc === "hub") {
+        deliveryCost = 0;
+        deliveryLabel = "₹0 (Sector 93 Hub Pickup)";
+      } else if (loc === "cybercity") {
+        deliveryCost = 499;
+        deliveryLabel = "₹499 (Cyber City / Golf Course)";
+      } else if (loc === "airport") {
+        deliveryCost = 800;
+        deliveryLabel = "₹800 (Delhi Airport IGI)";
+      } else if (loc === "doorstep") {
+        if (locData) {
+          deliveryCost = locData.deliveryFee;
+          if (deliveryCost === 0) {
+            deliveryLabel = `FREE (₹0 - ${locData.distanceKm} km Hub Zone)`;
+          } else if (locData.requiresConfirmationCall) {
+            deliveryLabel = `₹${deliveryCost.toLocaleString("en-IN")} (${locData.distanceKm} km - Outstation)`;
+          } else {
+            deliveryLabel = `₹${deliveryCost.toLocaleString("en-IN")} (${locData.distanceKm} km Delivery)`;
+          }
+        } else {
+          deliveryCost = 499; // Standard Gurugram local delivery default
+          deliveryLabel = "₹499 (Gurugram Doorstep Standard)";
+        }
+      }
+
+      const base = selectedConfigCar.pricePerDay * days;
+      const addons = (unlimited ? 300 * days : 0) + (damageCover ? 250 * days : 0);
+      const total = base + addons + deliveryCost;
+
+      document.getElementById("liveDays").innerText = `${days} Days`;
+      document.getElementById("liveBaseFare").innerText = `₹${base.toLocaleString("en-IN")}`;
+      document.getElementById("liveDeliveryFee").innerText = deliveryLabel;
+      const depEl = document.getElementById("liveDeposit");
+      if (depEl && selectedConfigCar.deposit) depEl.innerText = `₹${selectedConfigCar.deposit.toLocaleString("en-IN")} (100% Refundable)`;
+      document.getElementById("liveFinalTotal").innerText = `₹${total.toLocaleString("en-IN")}`;
+    }
+
+    function handleConfiguratorWhatsAppSubmit(e) {
+      e.preventDefault();
+      if (!selectedConfigCar) return;
+      const name = document.getElementById("cfgCustomerName").value.trim();
+      const phone = document.getElementById("cfgCustomerPhone").value.trim();
+      const start = document.getElementById("cfgStartDate").value;
+      const end = document.getElementById("cfgEndDate").value;
+      const locSelect = document.getElementById("cfgPickupLoc");
+      const locType = locSelect.value;
+      const locText = locSelect.options[locSelect.selectedIndex].text;
+      const unlimited = document.getElementById("cfgUnlimitedKms").checked ? "Yes" : "No";
+      const damage = document.getElementById("cfgDamageCover").checked ? "Yes" : "No";
+      const total = document.getElementById("liveFinalTotal").innerText;
+      const deliveryFeeText = document.getElementById("liveDeliveryFee").innerText;
+
+      const locData = window.detectedLocationData || detectedLocationData;
+      const customAddr = document.getElementById("cfgLocationAddress") ? document.getElementById("cfgLocationAddress").value.trim() : "";
+
+      let locationSummary = locText;
+      let callNote = "";
+
+      if (locType === "doorstep") {
+        if (customAddr) {
+          locationSummary = `Doorstep Delivery at: ${customAddr}`;
+        }
+        if (locData) {
+          locationSummary += ` (${locData.distanceKm} km from Hub)`;
+          if (locData.requiresConfirmationCall) {
+            callNote = `%0A*Route Status:* Manager Call Confirmation Required (>30 km threshold, Outstation delivery fee: ₹${locData.deliveryFee})`;
+          }
+        }
+      }
+
+      const msg = `*NEW LUXURY BOOKING INQUIRY*%0A` +
+        `--------------------------------%0A` +
+        `*Customer Name:* ${name}%0A` +
+        `*Phone:* ${phone}%0A` +
+        `*Vehicle:* ${selectedConfigCar.name} (${selectedConfigCar.modelYear})%0A` +
+        `*Rate:* ₹${selectedConfigCar.pricePerDay.toLocaleString("en-IN")}/day%0A` +
+        `*Pickup Date:* ${start}%0A` +
+        `*Return Date:* ${end}%0A` +
+        `*Handover Option:* ${locationSummary}%0A` +
+        `*Delivery Charges:* ${deliveryFeeText}${callNote}%0A` +
+        `*Unlimited KMs:* ${unlimited}%0A` +
+        `*Zero Excess Cover:* ${damage}%0A` +
+        `*Est. Total Fare:* ${total}%0A` +
+        `--------------------------------%0A` +
+        `Hub: Sector 93 Gurugram. Please confirm car availability!`;
+
+      window.open(`https://wa.me/918396977520?text=${msg}`, "_blank");
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       populateConfiguratorDropdown();
       const today = new Date().toISOString().split("T")[0];

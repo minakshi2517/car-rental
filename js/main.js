@@ -19,6 +19,7 @@ const FLEET_DATA = [
     pricePerDay: 3200,
     category: "suv",
     categoryName: "Mid SUV",
+    isEconomy: true,
     transmission: "Automatic / Manual",
     fuel: "Petrol Hybrid",
     seats: "5 Seater",
@@ -36,8 +37,9 @@ const FLEET_DATA = [
     name: "Mahindra Thar Roxx (5-Door)",
     modelYear: "2024",
     pricePerDay: 6500,
-    category: "offroad",
+    category: "suv",
     categoryName: "4x4 Offroad SUV",
+    isEconomy: false,
     transmission: "Automatic",
     fuel: "Diesel Turbo",
     seats: "5 Seater",
@@ -55,8 +57,9 @@ const FLEET_DATA = [
     name: "Mahindra Scorpio-N",
     modelYear: "2024",
     pricePerDay: 7900,
-    category: "luxury",
+    category: "suv",
     categoryName: "Luxury 7-Seater",
+    isEconomy: false,
     transmission: "Automatic",
     fuel: "Diesel 2.2L mHawk",
     seats: "7 Seater",
@@ -74,8 +77,9 @@ const FLEET_DATA = [
     name: "Mahindra Scorpio-N Facelift",
     modelYear: "2025/2026",
     pricePerDay: 8900,
-    category: "luxury",
+    category: "suv",
     categoryName: "Luxury 7-Seater",
+    isEconomy: false,
     transmission: "Automatic 4x4",
     fuel: "Diesel Turbo",
     seats: "7 Seater",
@@ -93,8 +97,9 @@ const FLEET_DATA = [
     name: "Mahindra XUV 700 (AX7L)",
     modelYear: "2024/2025",
     pricePerDay: 7900,
-    category: "luxury",
+    category: "suv",
     categoryName: "Luxury 7-Seater",
+    isEconomy: false,
     transmission: "Automatic",
     fuel: "Diesel / Petrol",
     seats: "7 Seater",
@@ -114,6 +119,7 @@ const FLEET_DATA = [
     pricePerDay: 3600,
     category: "suv",
     categoryName: "Coupe SUV",
+    isEconomy: false,
     transmission: "Automatic",
     fuel: "Hyperion Turbo Petrol",
     seats: "5 Seater",
@@ -131,15 +137,16 @@ const FLEET_DATA = [
     name: "Mahindra Thar (3-Door Hardtop)",
     modelYear: "2024",
     pricePerDay: 5900,
-    category: "offroad",
+    category: "suv",
     categoryName: "4x4 Adventure",
+    isEconomy: false,
     transmission: "Manual / Auto",
     fuel: "Diesel 4x4",
     seats: "4 Seater",
     mileage: "14.8 km/l",
     badge: "Off-Road King",
     badgeType: "primary",
-    image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80",
+    image: "images/thar-3door.jpg",
     features: ["Mechanical Locking Diff", "Washable Interior with Drain Plugs", "Convertible/Hardtop Option", "Roll Cage Safety", "Touchscreen Navigation"],
     deposit: 5000,
     freeKms: "300 km/day",
@@ -150,15 +157,16 @@ const FLEET_DATA = [
     name: "Mahindra Scorpio Classic S11",
     modelYear: "2024",
     pricePerDay: 6000,
-    category: "luxury",
+    category: "suv",
     categoryName: "Full-Size 7-Seater",
+    isEconomy: false,
     transmission: "Manual",
     fuel: "Diesel 2.2L",
     seats: "7 / 9 Seater",
     mileage: "14.0 km/l",
     badge: "Heavy Duty",
     badgeType: "dark",
-    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=900&q=80",
+    image: "images/scorpio-classic.jpg",
     features: ["Classic Muscle Grille", "Captains Executive Seats", "Hydraulic Power Steering", "Robust Ladder Frame", "High Seating Visibility"],
     deposit: 5000,
     freeKms: "300 km/day",
@@ -171,13 +179,14 @@ const FLEET_DATA = [
     pricePerDay: 4000,
     category: "suv",
     categoryName: "Premium Mid SUV",
+    isEconomy: false,
     transmission: "Automatic",
     fuel: "Turbo Petrol / Diesel",
     seats: "5 Seater",
     mileage: "17.0 km/l",
     badge: "Executive",
     badgeType: "blue",
-    image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=80",
+    image: "images/seltos.jpg",
     features: ["Dual 10.25 Inch Curved Displays", "Panoramic Sunroof", "Bose 8-Speaker System", "Ambient Mood Lighting", "Air Purifier"],
     deposit: 4000,
     freeKms: "300 km/day",
@@ -188,15 +197,16 @@ const FLEET_DATA = [
     name: "Tata Nexon",
     modelYear: "2025",
     pricePerDay: 3500,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Compact SUV",
+    isEconomy: true,
     transmission: "DCA Automatic / Manual",
     fuel: "Turbo Petrol / Diesel",
     seats: "5 Seater",
     mileage: "19.2 km/l",
     badge: "5-Star Safety",
     badgeType: "green",
-    image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=900&q=80",
+    image: "images/nexon.jpg",
     features: ["5-Star BNCAP Crash Safety", "Sequential LED Lightbars", "Voice Assisted Sunroof", "Touch Aircon Console", "Drive Modes (City/Eco/Sport)"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -207,15 +217,16 @@ const FLEET_DATA = [
     name: "Hyundai Venue",
     modelYear: "2025",
     pricePerDay: 3500,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Compact SUV",
+    isEconomy: true,
     transmission: "Manual / Auto",
     fuel: "Petrol",
     seats: "5 Seater",
     mileage: "18.3 km/l",
     badge: "2025 Edition",
     badgeType: "blue",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80",
+    image: "images/venue.jpg",
     features: ["Electric Sunroof", "BlueLink Connected Tech", "Wireless Phone Projection", "Rear AC Vents", "Push Button Start"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -226,15 +237,16 @@ const FLEET_DATA = [
     name: "Hyundai Venue",
     modelYear: "2026",
     pricePerDay: 3500,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Compact SUV",
+    isEconomy: true,
     transmission: "Automatic",
     fuel: "Turbo Petrol",
     seats: "5 Seater",
     mileage: "18.8 km/l",
     badge: "2026 Model",
     badgeType: "blue",
-    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80",
+    image: "images/venue.jpg",
     features: ["Digital Cockpit", "Smart Cruise Control", "Wireless Android Auto / Apple CarPlay", "Paddle Shifters", "Fast Type-C Ports"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -245,15 +257,16 @@ const FLEET_DATA = [
     name: "Mahindra XUV 3XO",
     modelYear: "2025",
     pricePerDay: 3500,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Compact SUV",
+    isEconomy: true,
     transmission: "Automatic (TCMPFi)",
     fuel: "Turbo Petrol / Diesel",
     seats: "5 Seater",
     mileage: "18.5 km/l",
     badge: "Panoramic Skyroof",
     badgeType: "primary",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80",
+    image: "images/xuv-3xo.jpg",
     features: ["Segment-First Panoramic Sunroof", "Level 2 ADAS Suite", "130 PS Turbo Power", "Harmon 7-Speaker Audio", "Dual Zone AC"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -264,15 +277,16 @@ const FLEET_DATA = [
     name: "Maruti Fronx (Grandeur Grey)",
     modelYear: "2025",
     pricePerDay: 3000,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Crossover SUV",
+    isEconomy: true,
     transmission: "Manual / AGS",
     fuel: "Petrol 1.2L / Turbo",
     seats: "5 Seater",
     mileage: "22.8 km/l",
     badge: "Grey 2025",
     badgeType: "dark",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+    image: "images/fronx-grey.jpg",
     features: ["Heads-Up Display (HUD)", "360 Degree View Camera", "9-inch SmartPlay Pro+ Touch", "Wireless Fast Charger", "High Ground Clearance"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -283,15 +297,16 @@ const FLEET_DATA = [
     name: "Maruti Fronx (Pearl White)",
     modelYear: "2025",
     pricePerDay: 3000,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Crossover SUV",
+    isEconomy: true,
     transmission: "Automatic",
     fuel: "Petrol DualJet",
     seats: "5 Seater",
     mileage: "22.8 km/l",
     badge: "White 2025",
     badgeType: "primary",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+    image: "images/fronx-white.jpg",
     features: ["Pearl Arctic White Exterior", "Paddle Shifters", "Cruise Control", "UV Cut Glass", "Smartplay Audio"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -302,15 +317,16 @@ const FLEET_DATA = [
     name: "Tata Punch",
     modelYear: "2026",
     pricePerDay: 3000,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Micro SUV",
+    isEconomy: true,
     transmission: "Automatic / Manual",
     fuel: "Petrol",
     seats: "5 Seater",
     mileage: "20.1 km/l",
     badge: "2026 Model",
     badgeType: "green",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=900&q=80",
+    image: "images/punch.jpg",
     features: ["5-Star Global NCAP Rating", "90-Degree Opening Doors", "Harman Infotainment", "Terrain Traction Pro", "Auto Headlamps"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -321,15 +337,16 @@ const FLEET_DATA = [
     name: "Tata Punch",
     modelYear: "2024",
     pricePerDay: 3000,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Micro SUV",
+    isEconomy: true,
     transmission: "Manual",
     fuel: "Petrol 1.2L",
     seats: "5 Seater",
     mileage: "20.1 km/l",
     badge: "2024 Model",
     badgeType: "green",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=900&q=80",
+    image: "images/punch.jpg",
     features: ["Solid Build Quality", "Spacious Cabin", "Cruise Control", "Rear Defogger & Wiper", "Dual Airbags"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -340,15 +357,16 @@ const FLEET_DATA = [
     name: "Hyundai Exter",
     modelYear: "2024/2025",
     pricePerDay: 2500,
-    category: "compact-suv",
+    category: "suv",
     categoryName: "Micro SUV",
+    isEconomy: true,
     transmission: "Manual / AMT",
     fuel: "Petrol 1.2L",
     seats: "5 Seater",
     mileage: "19.4 km/l",
     badge: "Best Value",
     badgeType: "green",
-    image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80",
+    image: "images/exter.jpg",
     features: ["Smart Electric Sunroof", "Factory Dashcam (Dual)", "6 Airbags Standard", "H-Signature LED DRLs", "Digital Cluster"],
     deposit: 2000,
     freeKms: "300 km/day",
@@ -361,13 +379,14 @@ const FLEET_DATA = [
     pricePerDay: 3000,
     category: "hatchback",
     categoryName: "Premium Hatchback",
+    isEconomy: true,
     transmission: "Automatic",
     fuel: "Petrol DualJet",
     seats: "5 Seater",
     mileage: "22.9 km/l",
     badge: "2026 Model",
     badgeType: "blue",
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=900&q=80",
+    image: "images/baleno.jpg",
     features: ["Heads-Up Display", "360 Surround View", "Auto Climate Control", "Arkamys Surround Sound", "Tilt & Telescopic Steering"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -380,13 +399,14 @@ const FLEET_DATA = [
     pricePerDay: 2800,
     category: "hatchback",
     categoryName: "Premium Hatchback",
+    isEconomy: true,
     transmission: "Manual",
     fuel: "Petrol 1.2L",
     seats: "5 Seater",
     mileage: "22.3 km/l",
     badge: "2024 Model",
     badgeType: "blue",
-    image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=900&q=80",
+    image: "images/baleno.jpg",
     features: ["Smooth 4-Cylinder Engine", "Spacious Boot Space (318L)", "Touchscreen Apple CarPlay", "Smart Key Push Start"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -399,13 +419,14 @@ const FLEET_DATA = [
     pricePerDay: 2800,
     category: "hatchback",
     categoryName: "Hatchback",
+    isEconomy: true,
     transmission: "Manual / AGS",
     fuel: "Petrol (Z-Series)",
     seats: "5 Seater",
     mileage: "25.75 km/l",
     badge: "High Mileage",
     badgeType: "green",
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80",
+    image: "images/swift-new.jpg",
     features: ["All-New Z12E Engine", "25.75 km/l Highest Mileage", "6 Airbags Standard", "Wireless Android Auto / CarPlay", "Sporty Steering"],
     deposit: 2000,
     freeKms: "300 km/day",
@@ -418,13 +439,14 @@ const FLEET_DATA = [
     pricePerDay: 2800,
     category: "hatchback",
     categoryName: "Hatchback",
+    isEconomy: true,
     transmission: "Manual",
     fuel: "Petrol",
     seats: "5 Seater",
     mileage: "24.0 km/l",
     badge: "City Ride",
     badgeType: "dark",
-    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=900&q=80",
+    image: "images/swift-white.jpg",
     features: ["Pearl Arctic White Finish", "Touchscreen Audio", "Electrically Foldable ORVMs", "Smooth City Drive", "Chilled AC"],
     deposit: 2000,
     freeKms: "300 km/day",
@@ -432,11 +454,62 @@ const FLEET_DATA = [
   }
 ];
 
+/**
+ * Filter Matching Helper
+ * Supports: all, hatchbacks, suvs, economy cars
+ */
+function carMatchesFilter(car, filterCategory) {
+  if (!filterCategory || filterCategory === "all") return true;
+  const f = filterCategory.toLowerCase().trim();
+  if (f === "hatchback" || f === "hatchbacks") {
+    return car.category === "hatchback";
+  }
+  if (f === "suv" || f === "suvs") {
+    return car.category === "suv" || car.category === "compact-suv" || car.category === "offroad" || car.category === "luxury";
+  }
+  if (f === "economy" || f === "economy-cars" || f === "economy cars" || f === "economy_cars") {
+    return car.isEconomy === true || car.pricePerDay <= 3500;
+  }
+  return car.category === f;
+}
+
 // App State
 let currentCategory = "all";
 let searchQuery = "";
 let selectedCarForBooking = null;
 let appliedDiscount = 0;
+
+// Sync Fleet with live Backend Database
+async function syncFleetWithBackend() {
+  try {
+    const res = await fetch("/api/cars");
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        FLEET_DATA.length = 0;
+        FLEET_DATA.push(...data);
+        if (typeof renderInventoryCards === "function") renderInventoryCards();
+        if (typeof renderFleetCards === "function") renderFleetCards();
+        if (typeof initConfigurator === "function") initConfigurator();
+        updateFilterCountBadges();
+      }
+    }
+  } catch (e) {
+    // Running in static file mode or backend starting up
+  }
+}
+
+function updateFilterCountBadges() {
+  const cntAll = document.getElementById("cntAll");
+  const cntHatch = document.getElementById("cntHatch");
+  const cntSuv = document.getElementById("cntSuv");
+  const cntEco = document.getElementById("cntEconomy");
+
+  if (cntAll) cntAll.innerText = FLEET_DATA.length;
+  if (cntHatch) cntHatch.innerText = FLEET_DATA.filter(c => carMatchesFilter(c, 'hatchbacks')).length;
+  if (cntSuv) cntSuv.innerText = FLEET_DATA.filter(c => carMatchesFilter(c, 'suvs')).length;
+  if (cntEco) cntEco.innerText = FLEET_DATA.filter(c => carMatchesFilter(c, 'economy')).length;
+}
 
 // Initialize on DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
@@ -448,7 +521,225 @@ document.addEventListener("DOMContentLoaded", () => {
   initFAQAccordion();
   initMobileNav();
   initHeroScrollAnimation();
+  syncFleetWithBackend();
+  updateFilterCountBadges();
 });
+
+/* ================================================================
+   CUSTOMER LOCATION DETECTION & DYNAMIC DELIVERY DISTANCE ENGINE
+   ================================================================ */
+const HUB_COORDS = { lat: 28.4013, lon: 76.9248 };
+let detectedLocationData = null;
+
+// Haversine distance in km
+function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
+  const toRad = x => (x * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const aerial = 6371 * c;
+  return Math.round(aerial * 1.25 * 10) / 10; // ~1.25 road curvature multiplier
+}
+
+function computeDeliveryQuote(roadKm, addressName) {
+  let fee = 0;
+  let zone = 'Local Hub (Sector 93)';
+  let requiresCall = false;
+  let message = '';
+
+  if (roadKm <= 5) {
+    fee = 0;
+    zone = 'Sector 93 Free Hub Zone (<= 5 km)';
+    message = 'Free doorstep delivery in Sector 93 & immediate surroundings!';
+  } else if (roadKm <= 18) {
+    fee = 499;
+    zone = 'Gurugram Core Delivery (5 - 18 km)';
+    message = 'Standard Gurugram doorstep delivery (Cyber City, Golf Course Rd, Sohna Rd).';
+  } else if (roadKm <= 30) {
+    fee = 799;
+    zone = 'Extended NCR / Airport Zone (18 - 30 km)';
+    message = 'Express delivery to Delhi Airport IGI & South/West Delhi.';
+  } else {
+    const extraKm = Math.ceil(roadKm - 30);
+    fee = 799 + (extraKm * 25);
+    zone = `Outstation / Far NCR (${roadKm} km)`;
+    requiresCall = true;
+    message = `Distance is ${roadKm} km from Sector 93 Hub. Outstation delivery charge: ₹${fee}. Our fleet manager will call you to confirm dispatch timing & route availability!`;
+  }
+
+  return {
+    distanceKm: roadKm,
+    deliveryFee: fee,
+    deliveryZone: zone,
+    requiresConfirmationCall: requiresCall,
+    message: message,
+    detectedAddress: addressName
+  };
+}
+
+// Detect Customer Location via Browser Geolocation API + Reverse Geocoding
+async function detectCustomerLocation() {
+  const btn = document.getElementById("btnDetectLocation");
+  if (btn) {
+    btn.classList.add("detecting");
+    btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Detecting...`;
+  }
+
+  if (!navigator.geolocation) {
+    await detectLocationViaIp();
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      await resolveAndApplyLocation(lat, lon);
+    },
+    async (err) => {
+      console.warn("GPS permission denied or unavailable, trying IP Geolocation fallback...", err);
+      await detectLocationViaIp();
+    },
+    { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 }
+  );
+}
+
+// IP Geolocation Fallback
+async function detectLocationViaIp() {
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    if (res.ok) {
+      const data = await res.json();
+      if (data.latitude && data.longitude) {
+        const addr = `${data.city || 'Gurugram'}, ${data.region || 'Haryana'}, ${data.postal || ''} (${data.country_name || 'India'})`;
+        await resolveAndApplyLocation(data.latitude, data.longitude, addr);
+        return;
+      }
+    }
+  } catch (e) {
+    console.warn("IP Geolocation failed:", e);
+  }
+  
+  // Default fallback if all fail
+  const fallbackQuote = computeDeliveryQuote(12.5, "Gurugram, Haryana");
+  applyLocationQuoteToUI(fallbackQuote);
+}
+
+// Reverse Geocode & Apply Quote
+async function resolveAndApplyLocation(lat, lon, knownAddress) {
+  let addressText = knownAddress || "";
+
+  if (!addressText) {
+    try {
+      const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&addressdetails=1`);
+      if (geoRes.ok) {
+        const geoData = await geoRes.json();
+        const a = geoData.address || {};
+        const parts = [
+          a.road || a.suburb || a.neighbourhood || a.residential,
+          a.city || a.town || a.county || "Gurugram",
+          a.state,
+          a.postcode
+        ].filter(Boolean);
+        addressText = parts.length > 0 ? parts.join(", ") : geoData.display_name;
+      }
+    } catch (e) {
+      addressText = `Near Lat ${lat.toFixed(4)}, Lon ${lon.toFixed(4)}`;
+    }
+  }
+
+  if (!addressText) addressText = "Gurugram, Haryana";
+
+  // Try Server API for calculation or calculate client side
+  let quote = null;
+  try {
+    const apiRes = await fetch("/api/delivery-quote", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lat, lon, address: addressText })
+    });
+    if (apiRes.ok) {
+      quote = await apiRes.json();
+    }
+  } catch (e) {}
+
+  if (!quote) {
+    const roadKm = calculateHaversineDistance(HUB_COORDS.lat, HUB_COORDS.lon, lat, lon);
+    quote = computeDeliveryQuote(roadKm, addressText);
+  }
+
+  applyLocationQuoteToUI(quote);
+}
+
+// Update UI with calculated location and delivery fee
+function applyLocationQuoteToUI(quote) {
+  detectedLocationData = quote;
+  window.detectedLocationData = quote;
+
+  const btn = document.getElementById("btnDetectLocation");
+  if (btn) {
+    btn.classList.remove("detecting");
+    btn.innerHTML = `<i class="fa-solid fa-location-crosshairs"></i> Re-detect Location`;
+  }
+
+  const addrInput = document.getElementById("cfgLocationAddress");
+  if (addrInput) {
+    addrInput.value = quote.detectedAddress || "";
+  }
+
+  const card = document.getElementById("deliveryDistanceCard");
+  if (card) {
+    card.style.display = "block";
+    document.getElementById("locDistanceKm").innerText = `${quote.distanceKm} km`;
+    
+    const feeEl = document.getElementById("locDeliveryFeeText");
+    const feePill = document.getElementById("locFeePill");
+    if (feeEl) feeEl.innerText = quote.deliveryFee > 0 ? `₹${quote.deliveryFee}` : `FREE (₹0)`;
+    if (feePill) {
+      if (quote.requiresConfirmationCall) feePill.classList.add("surcharge");
+      else feePill.classList.remove("surcharge");
+    }
+
+    const statusEl = document.getElementById("locStatusText");
+    if (statusEl) statusEl.innerText = quote.message;
+
+    const callBadge = document.getElementById("locCallBadge");
+    if (callBadge) {
+      callBadge.style.display = quote.requiresConfirmationCall ? "flex" : "none";
+    }
+  }
+
+  // Trigger fare calculation
+  if (typeof calculateLiveFare === "function") {
+    calculateLiveFare();
+  }
+}
+
+// Manual address input change
+function handleManualLocationInput(val) {
+  if (!val.trim()) {
+    detectedLocationData = null;
+    const card = document.getElementById("deliveryDistanceCard");
+    if (card) card.style.display = "none";
+    if (typeof calculateLiveFare === "function") calculateLiveFare();
+    return;
+  }
+  
+  // Approximate distance based on common NCR areas
+  let estimatedKm = 14.0;
+  const v = val.toLowerCase();
+  if (v.includes("93") || v.includes("signature") || v.includes("orchard")) estimatedKm = 1.0;
+  else if (v.includes("cyber") || v.includes("dlf") || v.includes("golf")) estimatedKm = 16.5;
+  else if (v.includes("airport") || v.includes("igi") || v.includes("delhi") || v.includes("dwarka")) estimatedKm = 26.0;
+  else if (v.includes("noida") || v.includes("faridabad") || v.includes("ghaziabad") || v.includes("greater noida")) estimatedKm = 52.0;
+
+  const quote = computeDeliveryQuote(estimatedKm, val.trim());
+  applyLocationQuoteToUI(quote);
+}
 
 /**
  * Hero Section Kinetic Zoom & Content Reveal on Scroll
@@ -513,6 +804,39 @@ function switchHeroCar(carKey) {
 }
 
 /**
+ * Switch Mobile Hero Car Image & Details
+ */
+function switchMobileHeroCar(carKey, name, price, img, carId) {
+  const carImg = document.getElementById("mobileHeroCarImg");
+  const nameEl = document.getElementById("mobileHeroCarName");
+  const priceEl = document.getElementById("mobileHeroCarPrice");
+  const bookBtn = document.getElementById("mobileHeroBookBtn");
+
+  if (carImg) {
+    carImg.style.opacity = "0.3";
+    carImg.style.transform = "scale(0.97)";
+    setTimeout(() => {
+      carImg.src = img;
+      carImg.style.opacity = "1";
+      carImg.style.transform = "scale(1)";
+    }, 120);
+  }
+
+  if (nameEl) nameEl.innerText = name;
+  if (priceEl) priceEl.innerText = price;
+  if (bookBtn) bookBtn.href = `booking.html?car=${encodeURIComponent(carId)}`;
+
+  const btns = document.querySelectorAll(".m-car-btn");
+  btns.forEach(btn => {
+    if (btn.getAttribute("onclick")?.includes(`'${carKey}'`)) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+/**
  * Check if office is currently open (9:00 AM - 10:00 PM IST)
  */
 function initOfficeTimings() {
@@ -566,7 +890,7 @@ function renderFleetCards() {
   if (!container) return;
 
   let filtered = FLEET_DATA.filter(car => {
-    const matchCategory = currentCategory === "all" || car.category === currentCategory;
+    const matchCategory = carMatchesFilter(car, currentCategory);
     const matchSearch = car.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                         car.categoryName.toLowerCase().includes(searchQuery.toLowerCase()) ||
                         car.modelYear.includes(searchQuery);
@@ -684,7 +1008,10 @@ function openBookingModal(carId) {
   appliedDiscount = 0;
 
   const modal = document.getElementById("bookingModal");
-  if (!modal) return;
+  if (!modal) {
+    window.location.href = `booking.html?car=${encodeURIComponent(carId)}`;
+    return;
+  }
 
   document.getElementById("modalCarName").innerText = car.name;
   document.getElementById("modalCarYear").innerText = car.modelYear + " Model";
@@ -1169,6 +1496,16 @@ function deleteAdminCar(id) {
   localStorage.setItem("admin_custom_cars", JSON.stringify(custom));
   showToast("Vehicle removed from Fleet", "info");
   renderAdminCars();
+}
+
+// Mobile Navigation Drawer Toggle
+function toggleMobileDrawer() {
+  const drawer = document.getElementById("mobileNavDrawer");
+  const backdrop = document.getElementById("mobileDrawerBackdrop");
+  if (drawer && backdrop) {
+    drawer.classList.toggle("active");
+    backdrop.classList.toggle("active");
+  }
 }
 
 // Global DOM Ready

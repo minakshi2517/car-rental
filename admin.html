@@ -4,15 +4,203 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard | Shree Chakardhar Enterprises</title>
-  <meta name="description" content="Admin Fleet Control Center for Shree Chakardhar Enterprises. Manage vehicle inventory, add new cars, view pricing and active bookings.">
+  <meta name="description" content="Admin Fleet Control Center for Shree Chakardhar Enterprises. Add, Edit, Delete and Manage real-time showroom vehicles and daily pricing.">
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Admin Specific Styling Enhancements */
+    .admin-toast-container {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 999999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .admin-toast {
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideInRight 0.3s ease;
+      min-width: 280px;
+    }
+    .admin-toast.success { border-left: 4px solid #10b981; }
+    .admin-toast.error { border-left: 4px solid #ef4444; }
+    .admin-toast.info { border-left: 4px solid #3b82f6; }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Modal Styling */
+    .admin-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(8, 12, 22, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .admin-modal-backdrop.active {
+      display: flex;
+    }
+    .admin-modal-box {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      position: relative;
+      animation: modalZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalZoomIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .admin-modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 10;
+    }
+    .admin-modal-header h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #090d16;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admin-modal-close {
+      background: #f1f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #475569;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .admin-modal-close:hover {
+      background: #e2e8f0;
+      color: #090d16;
+    }
+    .admin-modal-body {
+      padding: 24px;
+    }
+
+    /* Action Buttons in Table */
+    .admin-actions-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-table-edit {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .btn-table-edit:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .btn-table-del {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .btn-table-del:hover {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    /* Image Preview Box */
+    .img-preview-box {
+      width: 100%;
+      height: 140px;
+      border-radius: 12px;
+      border: 2px dashed #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      overflow: hidden;
+      margin-top: 8px;
+      position: relative;
+    }
+    .img-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Backend Live Status Pill */
+    .backend-live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body class="admin-body">
 
   <div class="ambient-mesh-bg"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="admin-toast-container" id="adminToastContainer"></div>
 
   <!-- Top Announcement Bar -->
   <aside class="top-announcement">
@@ -26,7 +214,10 @@
           Sector 93 Hub Office • Gurugram NCR
         </span>
       </div>
-      <div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <span class="backend-live-indicator" id="backendStatusTag">
+          <span class="live-dot" style="background:#10b981;"></span> Live Database Connected
+        </span>
         <a href="index.html" style="color:#ffffff;font-weight:700;">
           <i class="fa-solid fa-arrow-left" style="color:var(--brand-amber);margin-right:6px;"></i> Back to Live Website
         </a>
@@ -69,19 +260,22 @@
     <div class="admin-header-card">
       <div>
         <span class="category-pill-tag" style="background:rgba(217,119,6,0.2);color:#fbbf24;border-color:rgba(217,119,6,0.4);">
-          Fleet Management System
+          Full Fleet Database Control
         </span>
         <h1 style="font-family:var(--font-display);font-size:2.8rem;text-transform:uppercase;line-height:1.1;margin-top:6px;">
           Shree Chakardhar <span>Fleet Portal</span>
         </h1>
         <p style="color:#cbd5e1;font-size:0.9rem;margin-top:4px;">
-          Add new cars, update daily pricing, and manage live availability for Sector 93 Gurugram.
+          Add new cars with images, edit tariffs & specs of any vehicle, and delete cars from live database.
         </p>
       </div>
 
-      <div style="display:flex;gap:12px;">
-        <button class="filter-tab-pill active" onclick="renderAdminCars()">
-          <i class="fa-solid fa-rotate-right"></i> Refresh Fleet
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <button class="filter-tab-pill" style="background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);" onclick="handleResetDefaultFleet()">
+          <i class="fa-solid fa-rotate-left"></i> Reset Defaults (22)
+        </button>
+        <button class="filter-tab-pill active" onclick="loadAdminFleetData()">
+          <i class="fa-solid fa-rotate-right"></i> Refresh
         </button>
       </div>
     </div>
@@ -98,31 +292,31 @@
 
       <div class="admin-stat-card">
         <div class="admin-stat-icon" style="background:rgba(16,185,129,0.12);color:#10b981;">
-          <i class="fa-solid fa-circle-check"></i>
+          <i class="fa-solid fa-gas-pump"></i>
         </div>
         <div>
-          <div class="admin-stat-num" style="color:#10b981;">Ready</div>
-          <div class="admin-stat-label">Showroom Pristine</div>
+          <div class="admin-stat-num" id="statHatchCount" style="color:#10b981;">4</div>
+          <div class="admin-stat-label">Hatchbacks</div>
         </div>
       </div>
 
       <div class="admin-stat-card">
         <div class="admin-stat-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;">
-          <i class="fa-solid fa-plus-circle"></i>
+          <i class="fa-solid fa-truck-monster"></i>
         </div>
         <div>
-          <div class="admin-stat-num" id="statCustomCars">0</div>
-          <div class="admin-stat-label">Custom Added Cars</div>
+          <div class="admin-stat-num" id="statSuvCount" style="color:#3b82f6;">18</div>
+          <div class="admin-stat-label">SUVs & 4x4s</div>
         </div>
       </div>
 
       <div class="admin-stat-card">
         <div class="admin-stat-icon" style="background:rgba(168,85,247,0.12);color:#a855f7;">
-          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <i class="fa-solid fa-wallet"></i>
         </div>
         <div>
-          <div class="admin-stat-num" style="font-size:1.8rem;">₹3,200 - ₹8,900</div>
-          <div class="admin-stat-label">Daily Tariff Range</div>
+          <div class="admin-stat-num" id="statEconomyCount" style="color:#a855f7;">14</div>
+          <div class="admin-stat-label">Economy Cars</div>
         </div>
       </div>
     </div>
@@ -136,88 +330,161 @@
           <i class="fa-solid fa-circle-plus" style="color:var(--brand-amber);"></i> Add New Vehicle
         </h3>
 
-        <form id="addCarForm" onsubmit="handleAddCarSubmit(event)">
+        <form id="adminAddCarForm" onsubmit="handleAddNewCarSubmit(event)">
           <div class="input-field-group">
-            <label class="input-label" for="adminCarName">Vehicle Name</label>
-            <input type="text" id="adminCarName" class="input-control" placeholder="e.g. Toyota Fortuner Legender" required>
+            <label class="input-label" for="addCarName">Vehicle Name *</label>
+            <input type="text" id="addCarName" class="input-control" placeholder="e.g. Toyota Innova Hycross" required>
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="input-field-group">
-              <label class="input-label" for="adminCarCategory">Category</label>
-              <select id="adminCarCategory" class="input-control">
-                <option value="suv">Mid SUV</option>
-                <option value="offroad">4x4 Offroad</option>
-                <option value="luxury">Luxury 7-Seater</option>
-                <option value="compact-suv">Compact SUV</option>
-                <option value="hatchback">Premium Hatchback</option>
+              <label class="input-label" for="addCarYear">Model Year *</label>
+              <input type="text" id="addCarYear" class="input-control" value="2025" required>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="addCarCategory">Category *</label>
+              <select id="addCarCategory" class="input-control">
+                <option value="suv">SUVs</option>
+                <option value="hatchback">Hatchbacks</option>
               </select>
             </div>
-            <div class="input-field-group">
-              <label class="input-label" for="adminCarPrice">Daily Rate (₹)</label>
-              <input type="number" id="adminCarPrice" class="input-control" placeholder="6500" required>
-            </div>
           </div>
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="input-field-group">
-              <label class="input-label" for="adminCarTrans">Transmission</label>
-              <select id="adminCarTrans" class="input-control">
+              <label class="input-label" for="addCarPrice">Daily Rate (₹) *</label>
+              <input type="number" id="addCarPrice" class="input-control" placeholder="3500" required>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="addCarTransmission">Transmission</label>
+              <select id="addCarTransmission" class="input-control">
                 <option value="Automatic">Automatic</option>
                 <option value="Manual">Manual</option>
-                <option value="Auto / Manual">Auto / Manual</option>
+                <option value="Automatic / Manual">Auto / Manual</option>
               </select>
             </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="input-field-group">
-              <label class="input-label" for="adminCarFuel">Fuel Type</label>
-              <select id="adminCarFuel" class="input-control">
+              <label class="input-label" for="addCarFuel">Fuel Type</label>
+              <select id="addCarFuel" class="input-control">
+                <option value="Petrol">Petrol</option>
                 <option value="Diesel Turbo">Diesel Turbo</option>
                 <option value="Petrol Hybrid">Petrol Hybrid</option>
-                <option value="Petrol">Petrol</option>
+                <option value="CNG">CNG</option>
                 <option value="Electric">Electric</option>
               </select>
             </div>
+            <div class="input-field-group">
+              <label class="input-label" for="addCarSeats">Seating</label>
+              <select id="addCarSeats" class="input-control">
+                <option value="5 Seater">5 Seater</option>
+                <option value="7 Seater">7 Seater</option>
+                <option value="4 Seater">4 Seater</option>
+                <option value="8 Seater">8 Seater</option>
+              </select>
+            </div>
           </div>
 
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="addCarMileage">Mileage (km/l)</label>
+              <input type="text" id="addCarMileage" class="input-control" placeholder="e.g. 21.5 km/l" value="20.0 km/l">
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="addCarDeposit">Deposit (₹)</label>
+              <input type="number" id="addCarDeposit" class="input-control" value="3000">
+            </div>
+          </div>
+
+          <!-- Image Selection & Upload Mode -->
           <div class="input-field-group">
-            <label class="input-label" for="adminCarSeats">Seating Capacity</label>
-            <select id="adminCarSeats" class="input-control">
-              <option value="5 Seater">5 Seater</option>
-              <option value="7 Seater">7 Seater</option>
-              <option value="4 Seater">4 Seater (4x4)</option>
-            </select>
+            <label class="input-label">Vehicle Photo</label>
+            <div style="display:flex;gap:8px;margin-bottom:8px;">
+              <label style="font-size:0.85rem;display:flex;align-items:center;gap:6px;cursor:pointer;">
+                <input type="radio" name="imageSource" value="upload" checked onchange="toggleImageInputMode(this.value)">
+                Upload from Computer
+              </label>
+              <label style="font-size:0.85rem;display:flex;align-items:center;gap:6px;cursor:pointer;">
+                <input type="radio" name="imageSource" value="preset" onchange="toggleImageInputMode(this.value)">
+                Choose Stock / URL
+              </label>
+            </div>
+
+            <div id="uploadInputWrap">
+              <input type="file" id="addCarImageFile" accept="image/*" class="input-control" onchange="handleFilePreview(this, 'addImagePreview')">
+            </div>
+
+            <div id="presetInputWrap" style="display:none;flex-direction:column;gap:6px;">
+              <select id="addCarPresetImage" class="input-control" onchange="handlePresetChange(this.value, 'addCarImagePath', 'addImagePreview')">
+                <option value="images/grand-vitara.jpg">Maruti Grand Vitara (2024)</option>
+                <option value="images/thar-roxx.jpg">Mahindra Thar Roxx 4x4</option>
+                <option value="images/scorpio-n.jpg">Mahindra Scorpio-N</option>
+                <option value="images/xuv700.jpg">Mahindra XUV 700</option>
+                <option value="images/curvv.jpg">Tata Curvv Coupe</option>
+                <option value="images/thar-3door.jpg">Mahindra Thar 3-Door</option>
+                <option value="images/scorpio-classic.jpg">Mahindra Scorpio Classic</option>
+                <option value="images/seltos.jpg">Kia Seltos</option>
+                <option value="images/nexon.jpg">Tata Nexon</option>
+                <option value="images/venue.jpg">Hyundai Venue</option>
+                <option value="images/xuv-3xo.jpg">Mahindra XUV 3XO</option>
+                <option value="images/fronx-grey.jpg">Maruti Fronx (Grey)</option>
+                <option value="images/fronx-white.jpg">Maruti Fronx (White)</option>
+                <option value="images/punch.jpg">Tata Punch</option>
+                <option value="images/exter.jpg">Hyundai Exter</option>
+                <option value="images/baleno.jpg">Maruti Baleno</option>
+                <option value="images/swift-new.jpg">Maruti Swift (Red)</option>
+                <option value="images/swift-white.jpg">Maruti Swift (White)</option>
+              </select>
+              <input type="text" id="addCarImagePath" class="input-control" placeholder="Or enter custom image URL" value="images/grand-vitara.jpg" oninput="document.getElementById('addImagePreview').src=this.value">
+            </div>
+
+            <div class="img-preview-box">
+              <img id="addImagePreview" src="images/grand-vitara.jpg" alt="Preview">
+            </div>
           </div>
 
-          <div class="input-field-group">
-            <label class="input-label" for="adminCarImg">Image URL / Path</label>
-            <input type="text" id="adminCarImg" class="input-control" placeholder="e.g. images/grand-vitara.jpg">
-          </div>
-
-          <button type="submit" class="btn-whatsapp-reserve" style="background:var(--brand-navy);color:#ffffff;box-shadow:none;margin-top:10px;">
-            <i class="fa-solid fa-plus"></i> Save Vehicle to Fleet
+          <button type="submit" id="btnAddCarSubmit" class="btn-whatsapp-reserve" style="background:var(--brand-navy);color:#ffffff;box-shadow:none;margin-top:14px;">
+            <i class="fa-solid fa-plus"></i> Save Vehicle to Database
           </button>
         </form>
       </aside>
 
       <!-- Right Column: Live Inventory Table -->
       <main class="admin-card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-          <h3 class="admin-card-title" style="margin-bottom:0;">
-            <i class="fa-solid fa-list-check" style="color:var(--brand-amber);"></i> Fleet Inventory Table
-          </h3>
-          <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Synced with LocalStorage</span>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h3 class="admin-card-title" style="margin-bottom:0;">
+              <i class="fa-solid fa-list-check" style="color:var(--brand-amber);"></i> Fleet Inventory Table
+            </h3>
+            <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">Full CRUD: Add, Edit Rates, Delete</span>
+          </div>
+
+          <!-- Search Input -->
+          <div style="max-width:280px;width:100%;">
+            <input type="text" id="adminTableSearch" placeholder="Search vehicle name..." class="input-control" style="padding:8px 14px;font-size:0.85rem;" oninput="handleAdminTableSearch(this.value)">
+          </div>
+        </div>
+
+        <!-- Category Filter Pills Row in Table Header -->
+        <div class="fleet-filter-pills-row" style="margin-bottom:16px;">
+          <button class="filter-tab-pill active" onclick="handleAdminFilterCategory('all', this)">All (<span id="tabCountAll">22</span>)</button>
+          <button class="filter-tab-pill" onclick="handleAdminFilterCategory('hatchbacks', this)">Hatchbacks (<span id="tabCountHatch">4</span>)</button>
+          <button class="filter-tab-pill" onclick="handleAdminFilterCategory('suvs', this)">SUVs (<span id="tabCountSuv">18</span>)</button>
+          <button class="filter-tab-pill" onclick="handleAdminFilterCategory('economy', this)">Economy Cars (<span id="tabCountEconomy">14</span>)</button>
         </div>
 
         <div class="admin-table-wrapper">
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Photo</th>
+                <th style="width:70px;">Photo</th>
                 <th>Car Details</th>
+                <th>Category</th>
                 <th>Rate/Day</th>
-                <th>Trans</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>Trans / Fuel</th>
+                <th style="text-align:right;">Actions</th>
               </tr>
             </thead>
             <tbody id="adminFleetTableBody">
@@ -230,6 +497,460 @@
     </div>
   </main>
 
+  <!-- Edit Vehicle Modal -->
+  <div class="admin-modal-backdrop" id="editCarModalBackdrop">
+    <div class="admin-modal-box">
+      <div class="admin-modal-header">
+        <h3><i class="fa-solid fa-pen-to-square" style="color:var(--brand-amber);"></i> Edit Vehicle Details</h3>
+        <button class="admin-modal-close" onclick="closeEditCarModal()" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="admin-modal-body">
+        <form id="editCarForm" onsubmit="handleEditCarSubmit(event)">
+          <input type="hidden" id="editCarId">
+
+          <div class="input-field-group">
+            <label class="input-label" for="editCarName">Vehicle Name *</label>
+            <input type="text" id="editCarName" class="input-control" required>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="editCarYear">Model Year *</label>
+              <input type="text" id="editCarYear" class="input-control" required>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="editCarCategory">Category *</label>
+              <select id="editCarCategory" class="input-control">
+                <option value="suv">SUVs</option>
+                <option value="hatchback">Hatchbacks</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="editCarPrice">Daily Rate (₹) *</label>
+              <input type="number" id="editCarPrice" class="input-control" required>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="editCarTransmission">Transmission</label>
+              <select id="editCarTransmission" class="input-control">
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic / Manual">Auto / Manual</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="editCarFuel">Fuel Type</label>
+              <select id="editCarFuel" class="input-control">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel Turbo">Diesel Turbo</option>
+                <option value="Petrol Hybrid">Petrol Hybrid</option>
+                <option value="CNG">CNG</option>
+                <option value="Electric">Electric</option>
+              </select>
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="editCarSeats">Seating</label>
+              <select id="editCarSeats" class="input-control">
+                <option value="5 Seater">5 Seater</option>
+                <option value="7 Seater">7 Seater</option>
+                <option value="4 Seater">4 Seater</option>
+                <option value="8 Seater">8 Seater</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="input-field-group">
+              <label class="input-label" for="editCarMileage">Mileage</label>
+              <input type="text" id="editCarMileage" class="input-control">
+            </div>
+            <div class="input-field-group">
+              <label class="input-label" for="editCarDeposit">Deposit (₹)</label>
+              <input type="number" id="editCarDeposit" class="input-control">
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label class="input-label" for="editCarImg">Image Path / URL</label>
+            <input type="text" id="editCarImg" class="input-control" oninput="document.getElementById('editImagePreview').src=this.value">
+            
+            <div style="margin-top:6px;">
+              <label style="font-size:0.8rem;color:var(--text-muted);">Or upload new replacement image:</label>
+              <input type="file" id="editCarFile" accept="image/*" class="input-control" style="margin-top:4px;" onchange="handleFilePreview(this, 'editImagePreview')">
+            </div>
+
+            <div class="img-preview-box">
+              <img id="editImagePreview" src="images/grand-vitara.jpg" alt="Preview">
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:20px;">
+            <button type="button" class="btn btn-secondary" style="flex:1;" onclick="closeEditCarModal()">Cancel</button>
+            <button type="submit" id="btnEditCarSubmit" class="btn btn-primary" style="flex:2;">
+              <i class="fa-solid fa-check"></i> Save Changes to Database
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script>
+    let adminFleet = [];
+    let currentAdminFilter = "all";
+    let adminSearchQuery = "";
+
+    // Toast Notification
+    function showAdminToast(msg, type = "success") {
+      const container = document.getElementById("adminToastContainer");
+      if (!container) return;
+      const t = document.createElement("div");
+      t.className = `admin-toast ${type}`;
+      const icon = type === "success" ? "fa-circle-check" : (type === "error" ? "fa-circle-exclamation" : "fa-circle-info");
+      t.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${msg}</span>`;
+      container.appendChild(t);
+      setTimeout(() => {
+        t.style.opacity = "0";
+        t.style.transform = "translateX(50px)";
+        t.style.transition = "all 0.3s";
+        setTimeout(() => t.remove(), 300);
+      }, 4000);
+    }
+
+    // Toggle Image Input Mode (Upload vs Preset)
+    function toggleImageInputMode(mode) {
+      const up = document.getElementById("uploadInputWrap");
+      const pr = document.getElementById("presetInputWrap");
+      if (mode === "upload") {
+        up.style.display = "block";
+        pr.style.display = "none";
+      } else {
+        up.style.display = "none";
+        pr.style.display = "flex";
+      }
+    }
+
+    function handlePresetChange(val, pathInputId, previewImgId) {
+      document.getElementById(pathInputId).value = val;
+      document.getElementById(previewImgId).src = val;
+    }
+
+    function handleFilePreview(input, previewImgId) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById(previewImgId).src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Load Admin Fleet from Backend (with fallback)
+    async function loadAdminFleetData() {
+      try {
+        const res = await fetch("/api/cars");
+        if (res.ok) {
+          adminFleet = await res.json();
+          document.getElementById("backendStatusTag").innerHTML = `<span class="live-dot" style="background:#10b981;"></span> Live Database Connected`;
+        } else {
+          throw new Error("API not ok");
+        }
+      } catch (err) {
+        console.warn("Backend API unavailable, using local fallback:", err);
+        adminFleet = (typeof getStoredFleet === "function") ? getStoredFleet() : FLEET_DATA;
+        document.getElementById("backendStatusTag").innerHTML = `<span class="live-dot" style="background:#f59e0b;"></span> Local Cache Mode`;
+      }
+
+      updateAdminStats();
+      renderAdminTable();
+    }
+
+    function updateAdminStats() {
+      const total = adminFleet.length;
+      const hatch = adminFleet.filter(c => carMatchesFilter(c, 'hatchbacks')).length;
+      const suv = adminFleet.filter(c => carMatchesFilter(c, 'suvs')).length;
+      const eco = adminFleet.filter(c => carMatchesFilter(c, 'economy')).length;
+
+      document.getElementById("statTotalFleet").innerText = total;
+      document.getElementById("statHatchCount").innerText = hatch;
+      document.getElementById("statSuvCount").innerText = suv;
+      document.getElementById("statEconomyCount").innerText = eco;
+
+      document.getElementById("tabCountAll").innerText = total;
+      document.getElementById("tabCountHatch").innerText = hatch;
+      document.getElementById("tabCountSuv").innerText = suv;
+      document.getElementById("tabCountEconomy").innerText = eco;
+    }
+
+    function renderAdminTable() {
+      const tbody = document.getElementById("adminFleetTableBody");
+      if (!tbody) return;
+
+      const filtered = adminFleet.filter(c => {
+        const catMatch = carMatchesFilter(c, currentAdminFilter);
+        const searchMatch = c.name.toLowerCase().includes(adminSearchQuery.toLowerCase()) || 
+                            (c.modelYear && c.modelYear.toString().includes(adminSearchQuery));
+        return catMatch && searchMatch;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text-muted);">No vehicles match your search or filter.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(car => `
+        <tr data-car-id="${car.id}">
+          <td>
+            <img src="${car.image}" alt="${car.name}" class="admin-car-thumb" onerror="this.src='images/grand-vitara.jpg'" style="width:65px;height:45px;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,0.08);">
+          </td>
+          <td>
+            <strong style="color:#090d16;font-size:0.95rem;">${car.name}</strong><br>
+            <span style="font-size:0.75rem;color:var(--text-muted);">${car.modelYear} Model • ${car.badge || 'Showroom'}</span>
+          </td>
+          <td>
+            <span class="category-pill-tag" style="margin-bottom:0;font-size:0.7rem;padding:3px 10px;">${car.category === 'hatchback' ? 'Hatchback' : 'SUV'}</span>
+            ${car.isEconomy || car.pricePerDay <= 3500 ? '<span style="font-size:0.68rem;color:#10b981;font-weight:700;margin-left:4px;">Economy</span>' : ''}
+          </td>
+          <td>
+            <strong style="color:var(--brand-amber);font-size:1.05rem;">₹${car.pricePerDay.toLocaleString('en-IN')}</strong><span style="font-size:0.75rem;color:var(--text-muted);">/day</span>
+          </td>
+          <td>
+            <span style="font-size:0.8rem;background:#f1f5f9;padding:4px 8px;border-radius:6px;font-weight:700;">${car.transmission.split(' ')[0]}</span>
+            <span style="font-size:0.78rem;color:var(--text-muted);margin-left:4px;">${car.fuel}</span>
+          </td>
+          <td style="text-align:right;">
+            <div class="admin-actions-cell" style="justify-content:flex-end;">
+              <button class="btn-table-edit" onclick="openEditCarModal('${car.id}')" title="Edit Vehicle">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+              <button class="btn-table-del" onclick="handleDeleteCar('${car.id}', '${encodeURIComponent(car.name)}')" title="Delete Vehicle">
+                <i class="fa-solid fa-trash"></i> Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function handleAdminFilterCategory(cat, btn) {
+      currentAdminFilter = cat;
+      document.querySelectorAll(".fleet-filter-pills-row .filter-tab-pill").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderAdminTable();
+    }
+
+    function handleAdminTableSearch(q) {
+      adminSearchQuery = q;
+      renderAdminTable();
+    }
+
+    // Add New Car Submission
+    async function handleAddNewCarSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById("btnAddCarSubmit");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Saving...`;
+
+      try {
+        let finalImagePath = "images/grand-vitara.jpg";
+        const imageSource = document.querySelector('input[name="imageSource"]:checked').value;
+
+        if (imageSource === "upload") {
+          const fileInput = document.getElementById("addCarImageFile");
+          if (fileInput.files && fileInput.files[0]) {
+            const formData = new FormData();
+            formData.append("image", fileInput.files[0]);
+            const uploadRes = await fetch("/api/upload", {
+              method: "POST",
+              body: formData
+            });
+            if (uploadRes.ok) {
+              const uploadData = await uploadRes.json();
+              finalImagePath = uploadData.imagePath;
+            }
+          }
+        } else {
+          finalImagePath = document.getElementById("addCarImagePath").value || "images/grand-vitara.jpg";
+        }
+
+        const newCarPayload = {
+          name: document.getElementById("addCarName").value.trim(),
+          modelYear: document.getElementById("addCarYear").value.trim(),
+          category: document.getElementById("addCarCategory").value,
+          pricePerDay: parseInt(document.getElementById("addCarPrice").value, 10),
+          transmission: document.getElementById("addCarTransmission").value,
+          fuel: document.getElementById("addCarFuel").value,
+          seats: document.getElementById("addCarSeats").value,
+          mileage: document.getElementById("addCarMileage").value,
+          deposit: parseInt(document.getElementById("addCarDeposit").value, 10) || 3000,
+          image: finalImagePath,
+          badge: "New Arrival"
+        };
+
+        const res = await fetch("/api/cars", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newCarPayload)
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          showAdminToast(`Vehicle "${data.car.name}" added successfully!`, "success");
+          document.getElementById("adminAddCarForm").reset();
+          document.getElementById("addImagePreview").src = "images/grand-vitara.jpg";
+          loadAdminFleetData();
+        } else {
+          const errData = await res.json();
+          throw new Error(errData.error || "Failed to add car");
+        }
+      } catch (err) {
+        showAdminToast(err.message || "Failed to save car", "error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-plus"></i> Save Vehicle to Database`;
+      }
+    }
+
+    // Open Edit Modal
+    function openEditCarModal(carId) {
+      const car = adminFleet.find(c => c.id === carId);
+      if (!car) return;
+
+      document.getElementById("editCarId").value = car.id;
+      document.getElementById("editCarName").value = car.name;
+      document.getElementById("editCarYear").value = car.modelYear;
+      document.getElementById("editCarCategory").value = car.category === 'hatchback' ? 'hatchback' : 'suv';
+      document.getElementById("editCarPrice").value = car.pricePerDay;
+      document.getElementById("editCarTransmission").value = car.transmission.includes("Manual") && !car.transmission.includes("Auto") ? "Manual" : (car.transmission.includes("Auto") && car.transmission.includes("Manual") ? "Automatic / Manual" : "Automatic");
+      document.getElementById("editCarFuel").value = car.fuel.includes("Diesel") ? "Diesel Turbo" : (car.fuel.includes("Hybrid") ? "Petrol Hybrid" : "Petrol");
+      document.getElementById("editCarSeats").value = car.seats || "5 Seater";
+      document.getElementById("editCarMileage").value = car.mileage || "18.0 km/l";
+      document.getElementById("editCarDeposit").value = car.deposit || 3000;
+      document.getElementById("editCarImg").value = car.image;
+      document.getElementById("editImagePreview").src = car.image;
+
+      document.getElementById("editCarModalBackdrop").classList.add("active");
+    }
+
+    function closeEditCarModal() {
+      document.getElementById("editCarModalBackdrop").classList.remove("active");
+    }
+
+    // Save Edit Form
+    async function handleEditCarSubmit(e) {
+      e.preventDefault();
+      const carId = document.getElementById("editCarId").value;
+      const submitBtn = document.getElementById("btnEditCarSubmit");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Updating...`;
+
+      try {
+        let finalImage = document.getElementById("editCarImg").value;
+        const fileInput = document.getElementById("editCarFile");
+        if (fileInput.files && fileInput.files[0]) {
+          const formData = new FormData();
+          formData.append("image", fileInput.files[0]);
+          const upRes = await fetch("/api/upload", {
+            method: "POST",
+            body: formData
+          });
+          if (upRes.ok) {
+            const upData = await upRes.json();
+            finalImage = upData.imagePath;
+          }
+        }
+
+        const updatePayload = {
+          name: document.getElementById("editCarName").value.trim(),
+          modelYear: document.getElementById("editCarYear").value.trim(),
+          category: document.getElementById("editCarCategory").value,
+          pricePerDay: parseInt(document.getElementById("editCarPrice").value, 10),
+          transmission: document.getElementById("editCarTransmission").value,
+          fuel: document.getElementById("editCarFuel").value,
+          seats: document.getElementById("editCarSeats").value,
+          mileage: document.getElementById("editCarMileage").value,
+          deposit: parseInt(document.getElementById("editCarDeposit").value, 10) || 3000,
+          image: finalImage
+        };
+
+        const res = await fetch(`/api/cars/${carId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatePayload)
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          showAdminToast(`Vehicle "${data.car.name}" updated successfully!`, "success");
+          closeEditCarModal();
+          loadAdminFleetData();
+        } else {
+          const errData = await res.json();
+          throw new Error(errData.error || "Update failed");
+        }
+      } catch (err) {
+        showAdminToast(err.message || "Failed to update vehicle", "error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-check"></i> Save Changes to Database`;
+      }
+    }
+
+    // Delete Car
+    async function handleDeleteCar(carId, encodedName) {
+      const carName = decodeURIComponent(encodedName);
+      if (!confirm(`Are you sure you want to delete "${carName}" from the fleet database?`)) {
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/cars/${carId}`, {
+          method: "DELETE"
+        });
+
+        if (res.ok) {
+          showAdminToast(`Vehicle "${carName}" deleted from fleet.`, "success");
+          loadAdminFleetData();
+        } else {
+          const errData = await res.json();
+          throw new Error(errData.error || "Delete failed");
+        }
+      } catch (err) {
+        showAdminToast(err.message || "Failed to delete vehicle", "error");
+      }
+    }
+
+    // Reset Defaults
+    async function handleResetDefaultFleet() {
+      if (!confirm("Are you sure you want to reset the fleet database back to the showroom default 22 models?")) {
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/cars/reset", { method: "POST" });
+        if (res.ok) {
+          showAdminToast("Fleet database restored to showroom defaults (22 cars)!", "success");
+          loadAdminFleetData();
+        } else {
+          throw new Error("Reset failed");
+        }
+      } catch (err) {
+        showAdminToast("Reset failed: " + err.message, "error");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadAdminFleetData();
+    });
+  </script>
 </body>
 </html>
