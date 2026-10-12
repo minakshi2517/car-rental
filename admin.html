@@ -387,6 +387,234 @@
         flex: none !important;
       }
     }
+
+    /* =========================================================
+       ADMIN LOGIN GATEWAY (LUXURY LIGHT THEME)
+       ========================================================= */
+    .admin-login-wrapper {
+      min-height: calc(85vh - 100px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 40px;
+    }
+    .admin-login-card {
+      background: #ffffff;
+      border: 1px solid rgba(12, 43, 72, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(12, 43, 72, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
+      width: 100%;
+      max-width: 420px;
+      padding: 28px 28px 24px;
+      position: relative;
+      overflow: hidden;
+      animation: modalZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .admin-login-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f59e0b, #009bbd, #0c2b48);
+    }
+    .admin-login-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .admin-login-logo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .admin-login-logo-wrap img {
+      height: 44px;
+      object-fit: contain;
+    }
+    .admin-login-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #b45309;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .admin-login-title {
+      color: #0c2b48;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.4px;
+    }
+    .admin-login-subtitle {
+      color: #64748b;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+    .admin-login-field-wrap {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 9px 14px;
+      margin-bottom: 14px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-login-field-wrap:focus-within {
+      background: #ffffff;
+      border-color: #009bbd;
+      box-shadow: 0 0 0 4px rgba(0, 155, 189, 0.12);
+    }
+    .admin-login-field-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .admin-login-field-label i {
+      color: #009bbd;
+      font-size: 0.75rem;
+    }
+    .admin-login-field-input {
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: #0c2b48 !important;
+      width: 100%;
+      padding: 1px 0;
+    }
+    .admin-login-field-input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+    .admin-password-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .admin-password-inner input {
+      padding-right: 32px !important;
+    }
+    .admin-password-toggle-btn {
+      position: absolute;
+      right: 0;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 4px;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .admin-password-toggle-btn:hover {
+      color: #0c2b48;
+    }
+    .admin-login-alert {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      animation: shakeAlert 0.3s ease;
+    }
+    @keyframes shakeAlert {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+    .admin-login-remember-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 0 2px;
+    }
+    .admin-login-remember-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      color: #475569;
+      cursor: pointer;
+      font-weight: 500;
+      user-select: none;
+    }
+    .admin-login-remember-label input {
+      accent-color: var(--brand-amber);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .admin-login-btn {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #0c2b48;
+      border: none;
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+      transition: all 0.2s ease;
+    }
+    .admin-login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4);
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    }
+    .admin-login-btn:active {
+      transform: translateY(0);
+    }
+    .admin-login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .admin-login-back-link {
+      color: #64748b;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .admin-login-back-link:hover {
+      color: #0c2b48;
+    }
   </style>
 </head>
 <body class="admin-body">
@@ -401,14 +629,15 @@
     <div class="container top-announcement-inner">
       <div style="display:flex;align-items:center;gap:16px;">
         <span class="status-indicator-pill">
-          <span class="live-dot"></span> Admin Control Center Active
+          <span class="live-dot"></span> Admin Control Center
         </span>
         <span style="color:#e2e8f0;">
           <i class="fa-solid fa-building" style="color:var(--brand-amber);margin-right:6px;"></i>
           Sector 93 Hub Office • Gurugram NCR
         </span>
       </div>
-      <div style="display:flex;align-items:center;gap:20px;">
+      <div id="topBarAuthInfo" style="display:flex;align-items:center;gap:18px;">
+        <!-- Filled by JS depending on auth state -->
         <span class="backend-live-indicator" id="backendStatusTag">
           <span class="live-dot" style="background:#10b981;"></span> Live Database Connected
         </span>
@@ -440,6 +669,9 @@
       </div>
 
       <div class="nav-right-actions" style="display:flex;align-items:center;gap:12px;">
+        <button id="adminNavLogoutBtn" onclick="handleAdminLogout()" class="filter-tab-pill" style="display:none;background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);padding:6px 14px;cursor:pointer;">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+        </button>
         <a href="https://wa.me/918396977520" target="_blank" class="btn-contact-pill">
           <i class="fa-brands fa-whatsapp"></i> Support
         </a>
@@ -466,6 +698,7 @@
       <a href="about.html" class="mobile-nav-link">About Us <i class="fa-solid fa-chevron-right"></i></a>
       <a href="contact.html" class="mobile-nav-link">Contact & Location <i class="fa-solid fa-chevron-right"></i></a>
       <a href="admin.html" class="mobile-nav-link active" style="color:var(--brand-amber);font-weight:800;">Admin Dashboard <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="javascript:void(0)" id="mobileNavLogoutBtn" onclick="handleAdminLogout()" class="mobile-nav-link" style="display:none;color:#ef4444;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout Admin <i class="fa-solid fa-chevron-right"></i></a>
     </div>
     <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(12, 43, 72,0.08);">
       <a href="index.html" class="btn-footer-primary" style="width:100%;justify-content:center;background:var(--brand-navy);color:#ffffff;">
@@ -473,14 +706,87 @@
       </a>
       <div style="margin-top:12px;font-size:0.8rem;color:var(--text-muted);text-align:center;">
         <span class="backend-live-indicator" style="padding:4px 10px;font-size:0.75rem;">
-          <span class="live-dot" style="background:#10b981;"></span> Live Database Active
+          <span class="live-dot" style="background:#10b981;"></span> Security Protected
         </span>
       </div>
     </div>
   </aside>
 
-  <!-- Main Admin Container -->
-  <main class="container admin-dashboard-container">
+  <!-- Admin Login Gateway Section (Luxury Light Theme) -->
+  <section class="admin-login-wrapper" id="adminLoginSection">
+    <div class="admin-login-card">
+      <div class="admin-login-header">
+        <div class="admin-login-logo-wrap">
+          <img src="images/logo.png" alt="Shree Chakardhar Enterprises">
+        </div>
+        <div class="admin-login-badge">
+          <i class="fa-solid fa-shield-halved"></i> Security Portal
+        </div>
+        <h2 class="admin-login-title">Admin Dashboard</h2>
+        <p class="admin-login-subtitle">Sign in with authorized credentials to access fleet management & controls.</p>
+      </div>
+
+      <div class="admin-login-alert" id="adminLoginAlert" role="alert">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="adminLoginAlertMsg">Invalid credentials. Access denied.</span>
+      </div>
+
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" autocomplete="off">
+        <div class="admin-login-field-wrap">
+          <label class="admin-login-field-label" for="adminLoginUser">
+            <i class="fa-solid fa-envelope"></i> Username / Email
+          </label>
+          <input 
+            type="text" 
+            id="adminLoginUser" 
+            class="admin-login-field-input" 
+            placeholder="Enter your email or username" 
+            required 
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="admin-login-field-wrap">
+          <label class="admin-login-field-label" for="adminLoginPass">
+            <i class="fa-solid fa-key"></i> Password
+          </label>
+          <div class="admin-password-inner">
+            <input 
+              type="password" 
+              id="adminLoginPass" 
+              class="admin-login-field-input" 
+              placeholder="Enter your password" 
+              required 
+              autocomplete="current-password"
+            >
+            <button type="button" class="admin-password-toggle-btn" id="toggleLoginPassBtn" onclick="toggleLoginPasswordVisibility()" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye" id="toggleLoginPassIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-login-remember-row">
+          <label class="admin-login-remember-label">
+            <input type="checkbox" id="adminRememberMe">
+            Remember session on this device
+          </label>
+        </div>
+
+        <button type="submit" id="btnAdminLoginSubmit" class="admin-login-btn">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Dashboard
+        </button>
+      </form>
+
+      <div style="text-align:center;margin-top:24px;padding-top:18px;border-top:1px solid rgba(0,0,0,0.06);">
+        <a href="index.html" class="admin-login-back-link">
+          <i class="fa-solid fa-arrow-left"></i> Back to Public Website
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Admin Container (Visible only when logged in) -->
+  <main class="container admin-dashboard-container" id="adminDashboardMain" style="display:none;">
 
     <!-- Header Card -->
     <div class="admin-header-card">
@@ -497,11 +803,17 @@
       </div>
 
       <div class="admin-header-actions">
+        <span class="status-indicator-pill" style="border:1px solid rgba(255,255,255,0.15);color:#cbd5e1;font-size:0.8rem;">
+          <i class="fa-solid fa-circle-user" style="color:var(--brand-amber);"></i> <span id="adminHeaderUserEmail">scecarrental@gmail.com</span>
+        </span>
         <button class="filter-tab-pill" style="background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.3);" onclick="handleResetDefaultFleet()">
           <i class="fa-solid fa-rotate-left"></i> Reset Defaults
         </button>
         <button class="filter-tab-pill active" onclick="loadAdminFleetData()">
           <i class="fa-solid fa-rotate-right"></i> Refresh
+        </button>
+        <button class="filter-tab-pill" style="background:rgba(239,68,68,0.2);color:#ffffff;border:1px solid rgba(239,68,68,0.4);" onclick="handleAdminLogout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
         </button>
       </div>
     </div>
@@ -682,7 +994,7 @@
       </aside>
 
       <!-- Right Column: Live Inventory Table -->
-      <main class="admin-card">
+      <section class="admin-card">
         <div class="admin-table-header-row">
           <div>
             <h3 class="admin-card-title" style="margin-bottom:0;">
@@ -726,7 +1038,7 @@
             </tbody>
           </table>
         </div>
-      </main>
+      </section>
 
     </div>
   </main>
@@ -839,9 +1151,190 @@
 
   <script src="js/main.js"></script>
   <script>
+    // Admin Authentication Setup
+    const AUTH_STORAGE_KEY = "sce_car_rental_admin_auth";
+
     let adminFleet = [];
     let currentAdminFilter = "all";
     let adminSearchQuery = "";
+
+    function getStoredAuth() {
+      try {
+        const sessionAuth = sessionStorage.getItem(AUTH_STORAGE_KEY);
+        if (sessionAuth) return JSON.parse(sessionAuth);
+        const localAuth = localStorage.getItem(AUTH_STORAGE_KEY);
+        if (localAuth) return JSON.parse(localAuth);
+      } catch (e) {}
+      return null;
+    }
+
+    function setStoredAuth(data, remember) {
+      try {
+        const serialized = JSON.stringify(data);
+        if (remember) {
+          localStorage.setItem(AUTH_STORAGE_KEY, serialized);
+        } else {
+          sessionStorage.setItem(AUTH_STORAGE_KEY, serialized);
+        }
+      } catch (e) {}
+    }
+
+    function clearStoredAuth() {
+      try {
+        sessionStorage.removeItem(AUTH_STORAGE_KEY);
+        localStorage.removeItem(AUTH_STORAGE_KEY);
+      } catch (e) {}
+    }
+
+    function checkAdminAuth() {
+      const auth = getStoredAuth();
+      if (auth && auth.authenticated) {
+        showDashboardView(auth.user || "scecarrental@gmail.com");
+        loadAdminFleetData();
+      } else {
+        showLoginView();
+      }
+    }
+
+    function showLoginView() {
+      const loginSection = document.getElementById("adminLoginSection");
+      const dashboardMain = document.getElementById("adminDashboardMain");
+      const navLogout = document.getElementById("adminNavLogoutBtn");
+      const mobileNavLogout = document.getElementById("mobileNavLogoutBtn");
+      const topBarAuth = document.getElementById("topBarAuthInfo");
+
+      if (loginSection) loginSection.style.display = "flex";
+      if (dashboardMain) dashboardMain.style.display = "none";
+      if (navLogout) navLogout.style.display = "none";
+      if (mobileNavLogout) mobileNavLogout.style.display = "none";
+
+      if (topBarAuth) {
+        topBarAuth.innerHTML = `
+          <span class="backend-live-indicator" style="background:rgba(239,68,68,0.15);color:#fca5a5;border-color:rgba(239,68,68,0.3);">
+            <span class="live-dot" style="background:#ef4444;"></span> Security Protected
+          </span>
+          <a href="index.html" style="color:#ffffff;font-weight:700;">
+            <i class="fa-solid fa-arrow-left" style="color:var(--brand-amber);margin-right:6px;"></i> Back to Live Website
+          </a>
+        `;
+      }
+
+      const passInput = document.getElementById("adminLoginPass");
+      if (passInput) passInput.value = "";
+    }
+
+    function showDashboardView(user) {
+      const loginSection = document.getElementById("adminLoginSection");
+      const dashboardMain = document.getElementById("adminDashboardMain");
+      const navLogout = document.getElementById("adminNavLogoutBtn");
+      const mobileNavLogout = document.getElementById("mobileNavLogoutBtn");
+      const headerEmail = document.getElementById("adminHeaderUserEmail");
+      const topBarAuth = document.getElementById("topBarAuthInfo");
+
+      if (loginSection) loginSection.style.display = "none";
+      if (dashboardMain) dashboardMain.style.display = "block";
+      if (navLogout) navLogout.style.display = "inline-flex";
+      if (mobileNavLogout) mobileNavLogout.style.display = "flex";
+      if (headerEmail) headerEmail.innerText = user || "scecarrental@gmail.com";
+
+      if (topBarAuth) {
+        topBarAuth.innerHTML = `
+          <span class="backend-live-indicator" id="backendStatusTag">
+            <span class="live-dot" style="background:#10b981;"></span> Live Database Connected
+          </span>
+          <span style="color:#cbd5e1;font-size:0.8rem;display:inline-flex;align-items:center;gap:6px;">
+            <i class="fa-solid fa-user-check" style="color:var(--brand-amber);"></i> ${user || "scecarrental@gmail.com"}
+          </span>
+          <button onclick="handleAdminLogout()" style="background:none;border:none;color:#fca5a5;cursor:pointer;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px;font-weight:700;padding:0;">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        `;
+      }
+    }
+
+    function toggleLoginPasswordVisibility() {
+      const passInput = document.getElementById("adminLoginPass");
+      const icon = document.getElementById("toggleLoginPassIcon");
+      if (!passInput) return;
+      if (passInput.type === "password") {
+        passInput.type = "text";
+        if (icon) {
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        }
+      } else {
+        passInput.type = "password";
+        if (icon) {
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      }
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const userInput = document.getElementById("adminLoginUser").value.trim();
+      const passInput = document.getElementById("adminLoginPass").value;
+      const remember = document.getElementById("adminRememberMe").checked;
+      const alertBox = document.getElementById("adminLoginAlert");
+      const alertMsg = document.getElementById("adminLoginAlertMsg");
+      const submitBtn = document.getElementById("btnAdminLoginSubmit");
+
+      alertBox.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying...`;
+
+      try {
+        const res = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: userInput, password: passInput })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const authUser = (data.user && data.user.username) ? data.user.username : userInput;
+          setStoredAuth({
+            authenticated: true,
+            user: authUser,
+            token: data.token,
+            timestamp: Date.now()
+          }, remember);
+
+          showDashboardView(authUser);
+          showAdminToast("Welcome! Signed in to Fleet Control Center.", "success");
+          loadAdminFleetData();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || "Invalid username or password. Access denied.");
+        }
+      } catch (err) {
+        alertMsg.innerText = err.message || "Invalid username or password. Access denied.";
+        alertBox.style.display = "flex";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Dashboard`;
+      }
+    }
+
+    async function handleAdminLogout() {
+      const auth = getStoredAuth();
+      if (auth && auth.token) {
+        try {
+          fetch("/api/admin/logout", {
+            method: "POST",
+            headers: { 
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + auth.token 
+            }
+          }).catch(() => {});
+        } catch(e) {}
+      }
+
+      clearStoredAuth();
+      showLoginView();
+      showAdminToast("Signed out from admin dashboard.", "info");
+    }
 
     // Toast Notification
     function showAdminToast(msg, type = "success") {
@@ -1185,7 +1678,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      loadAdminFleetData();
+      checkAdminAuth();
     });
   </script>
 </body>

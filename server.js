@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
@@ -101,6 +102,65 @@ const upload = multer({
     }
     cb(new Error('Only image files (jpg, png, webp, svg) are allowed!'));
   }
+});
+
+/* ================================================================
+   ADMIN AUTHENTICATION
+   ================================================================ */
+const ADMIN_CREDENTIALS = {
+  username: process.env.ADMIN_USERNAME || 'scecarrental@gmail.com',
+  password: process.env.ADMIN_PASSWORD || 'Sce@FivePs'
+};
+const activeSessions = new Set();
+
+app.post('/api/admin/login', (req, res) => {
+  const { username, password } = req.body || {};
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required.' });
+  }
+
+  const cleanUser = (username || '').trim().toLowerCase();
+  const cleanExpected = ADMIN_CREDENTIALS.username.toLowerCase();
+
+  if (cleanUser === cleanExpected && password === ADMIN_CREDENTIALS.password) {
+    const token = 'sce_admin_' + Date.now() + '_' + Math.random().toString(36).substring(2);
+    activeSessions.add(token);
+    return res.json({
+      success: true,
+      message: 'Authentication successful',
+      token: token,
+      user: {
+        username: ADMIN_CREDENTIALS.username
+      }
+    });
+  } else {
+    return res.status(401).json({
+      success: false,
+      error: 'Invalid username or password. Access denied.'
+    });
+  }
+});
+
+app.post('/api/admin/verify', (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = (authHeader && authHeader.startsWith('Bearer ')) 
+    ? authHeader.substring(7) 
+    : (req.body && req.body.token);
+  if (token && activeSessions.has(token)) {
+    return res.json({ valid: true, user: ADMIN_CREDENTIALS.username });
+  }
+  return res.status(401).json({ valid: false, error: 'Session invalid or expired' });
+});
+
+app.post('/api/admin/logout', (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = (authHeader && authHeader.startsWith('Bearer ')) 
+    ? authHeader.substring(7) 
+    : (req.body && req.body.token);
+  if (token) {
+    activeSessions.delete(token);
+  }
+  res.json({ success: true, message: 'Logged out successfully' });
 });
 
 /* ================================================================
