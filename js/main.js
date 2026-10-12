@@ -246,7 +246,7 @@ const FLEET_DATA = [
     mileage: "18.8 km/l",
     badge: "2026 Model",
     badgeType: "blue",
-    image: "images/hyundai venue.png",
+    image: "images/venue 2026.jpeg",
     features: ["Digital Cockpit", "Smart Cruise Control", "Wireless Android Auto / Apple CarPlay", "Paddle Shifters", "Fast Type-C Ports"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -266,7 +266,7 @@ const FLEET_DATA = [
     mileage: "18.5 km/l",
     badge: "Panoramic Skyroof",
     badgeType: "primary",
-    image: "images/mahindra xuv 3xo.png",
+    image: "images/Mahindra XUV 3XO.png",
     features: ["Segment-First Panoramic Sunroof", "Level 2 ADAS Suite", "130 PS Turbo Power", "Harmon 7-Speaker Audio", "Dual Zone AC"],
     deposit: 3000,
     freeKms: "300 km/day",
@@ -346,7 +346,7 @@ const FLEET_DATA = [
     mileage: "20.1 km/l",
     badge: "2024 Model",
     badgeType: "green",
-    image: "images/TATA punch.png",
+    image: "images/tata punch 2024.png",
     features: ["Solid Build Quality", "Spacious Cabin", "Cruise Control", "Rear Defogger & Wiper", "Dual Airbags"],
     deposit: 2500,
     freeKms: "300 km/day",
@@ -1532,6 +1532,7 @@ function toggleMobileDrawer() {
 
 // Global DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
+  initHeroScrollAnimation();
   initTestimonialsCarousel();
   initScrollAnimations();
   initAdminDashboard();
