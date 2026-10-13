@@ -122,7 +122,7 @@ app.post('/api/admin/login', (req, res) => {
   const cleanUser = (username || '').trim().toLowerCase();
   const cleanExpected = ADMIN_CREDENTIALS.username.toLowerCase();
 
-  if (cleanUser === cleanExpected && password === ADMIN_CREDENTIALS.password) {
+  if ((cleanUser === cleanExpected || cleanUser === 'info@scecarrental.in') && password === ADMIN_CREDENTIALS.password) {
     const token = 'sce_admin_' + Date.now() + '_' + Math.random().toString(36).substring(2);
     activeSessions.add(token);
     return res.json({
@@ -130,7 +130,7 @@ app.post('/api/admin/login', (req, res) => {
       message: 'Authentication successful',
       token: token,
       user: {
-        username: ADMIN_CREDENTIALS.username
+        username: cleanUser === 'info@scecarrental.in' ? 'info@scecarrental.in' : ADMIN_CREDENTIALS.username
       }
     });
   } else {
