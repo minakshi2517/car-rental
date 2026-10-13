@@ -1,0 +1,9 @@
+# Robots.txt for SCE Car Rental (Shree Chakardhar Enterprises)
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /api/admin/
+Disallow: /data/
+
+# Sitemaps
+Sitemap: https://scecarrental.in/sitemap.xml
